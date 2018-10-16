@@ -1,16 +1,19 @@
 
-== Intermediate Scale Runs ==
+Intermediate Scale Runs
+========================
 
 Things to include:
 
-__ Base Run __
+Base Run
+---------------
 
 * column-based hydrology
 * surface-star surface hydrology
 * new SEB
 * new-style flux based coupling
 
-__ Add-Ins __
+Add-Ins
+--------------
 
 * subgrid flow model
 * subgrid SEB model
