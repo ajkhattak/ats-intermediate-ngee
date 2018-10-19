@@ -332,7 +332,7 @@ Includes:
       <ParameterList name="initial condition" type="ParameterList">
         <Parameter name="initialize faces from cells" type="bool" value="true" />
         <ParameterList name="initialize from 1D column" type="ParameterList">
-          <Parameter name="file" type="string" value="../restart/column_data.h5" />
+          <Parameter name="file" type="string" value="../../restart/column_data.h5" />
           <Parameter name="z header" type="string" value="/z" />
           <Parameter name="f header" type="string" value="/pressure" />
           <Parameter name="coordinate orientation" type="string" value="depth" />
@@ -391,7 +391,7 @@ Includes:
       <ParameterList name="initial condition" type="ParameterList">
         <Parameter name="initialize faces from cells" type="bool" value="true" />
         <ParameterList name="initialize from 1D column" type="ParameterList">
-          <Parameter name="file" type="string" value="../restart/column_data.h5" />
+          <Parameter name="file" type="string" value="../../restart/column_data.h5" />
           <Parameter name="z header" type="string" value="/z" />
           <Parameter name="f header" type="string" value="/temperature" />
           <Parameter name="coordinate orientation" type="string" value="depth" />
@@ -973,7 +973,7 @@ Includes:
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../../../Data/Barrow_Alaska/spinup-10yr.h5" />
+                <Parameter name="file" type="string" value="../../data/Barrow_Alaska/spinup-10yr.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="incoming shortwave radiation [W m^-2]" />
               </ParameterList>
@@ -998,7 +998,7 @@ Includes:
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../../../Data/Barrow_Alaska/spinup-10yr.h5" />
+                <Parameter name="file" type="string" value="../../data/Barrow_Alaska/spinup-10yr.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="air temperature [K]" />
               </ParameterList>
@@ -1018,7 +1018,7 @@ Includes:
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../../../Data/Barrow_Alaska/spinup-10yr.h5" />
+                <Parameter name="file" type="string" value="../../data/Barrow_Alaska/spinup-10yr.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="relative humidity [-]" />
               </ParameterList>
@@ -1038,7 +1038,7 @@ Includes:
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../../../Data/Barrow_Alaska/spinup-10yr.h5" />
+                <Parameter name="file" type="string" value="../../data/Barrow_Alaska/spinup-10yr.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="wind speed [m s^-1]" />
               </ParameterList>
@@ -1058,7 +1058,7 @@ Includes:
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../../../Data/Barrow_Alaska/spinup-10yr.h5" />
+                <Parameter name="file" type="string" value="../../data/Barrow_Alaska/spinup-10yr.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="precipitation rain [m s^-1]" />
               </ParameterList>
@@ -1083,7 +1083,7 @@ Includes:
               </ParameterList>
 -->
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../../../Data/Barrow_Alaska/spinup-10yr.h5" />
+                <Parameter name="file" type="string" value="../../data/Barrow_Alaska/spinup-10yr.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="precipitation snow [m SWE s^-1]" />
               </ParameterList>
