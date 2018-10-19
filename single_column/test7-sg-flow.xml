@@ -7,7 +7,7 @@ Includes:
 [x] - star surface hydrology
 [x] - new surface star coupling
 
-[ ] - subgrid model
+[x] - subgrid model
 [ ] - subgrid SEB
 [ ] - subsidence
 [ ] - dynamic subgrid

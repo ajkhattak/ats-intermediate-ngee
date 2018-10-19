@@ -9,7 +9,7 @@ Includes:
 
 [ ] - subgrid model
 [ ] - subgrid SEB
-[ ] - subsidence
+[x] - subsidence
 [ ] - dynamic subgrid
 
 -->
@@ -600,6 +600,7 @@ Includes:
       </ParameterList>
       <ParameterList name="elevation evaluator" type="ParameterList">
         <Parameter name="parent domain name" type="string" value="domain" />
+	<Parameter name="includes non-rank-local dependencies" type="bool" value="true"/>
       </ParameterList>
       <ParameterList name="potential evaluator" type="ParameterList">
         <Parameter name="potential key" type="string" value="surface_star-pres_elev" />
