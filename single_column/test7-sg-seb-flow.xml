@@ -604,8 +604,8 @@ Includes:
         </ParameterList>
       </ParameterList>
       <ParameterList name="thermal conductivity evaluator" type="ParameterList">
-	<Parameter name="subgrid model" type="bool" value="true" />
         <Parameter name="thermal conductivity key" type="string" value="surface_star-thermal_conductivity" />
+        <Parameter name="ponded depth key" type="string" value="surface_star-volumetric_ponded_depth" />
         <ParameterList name="thermal conductivity parameters" type="ParameterList">
           <Parameter name="minimum thermal conductivity" type="double" value="1e-15" />
         </ParameterList>
@@ -630,29 +630,51 @@ Includes:
       </ParameterList>
 
       <ParameterList name="surface_column_*-water_content" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="overland pressure water content" />
+        <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{volumetric_ponded_depth, molar_density_liquid, cell_volume}" /> <!-- NOTE: this REQUIRES that molar density of liquid and ice are the same -->
       </ParameterList>
 
       <ParameterList name="surface_column_*-ponded_depth" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="icy ponded depth" />
+        <Parameter name="field evaluator type" type="string" value="ponded depth" />
       </ParameterList>
+      
+      <ParameterList name="snow_column_*-volumetric_depth" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="volumetric ponded and snow depths" />
+      </ParameterList>
+
+      <!--
+      <ParameterList name="surface_column_*-volumetric_ponded_depth" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="volumetric ponded depth" />
+      </ParameterList>
+      -->
 
       <ParameterList name="surface_column_*-energy" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="surface ice energy" />
+        <Parameter name="ponded depth key suffix" type="string" value="volumetric_ponded_depth" />
+        <Parameter name="molar density ice key suffix" type="string" value="molar_density_liquid" />
       </ParameterList>
 
       <ParameterList name="surface_star-water_content" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="overland subgrid water content" />
+        <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{volumetric_ponded_depth, molar_density_liquid, cell_volume}" /> <!-- NOTE: this REQUIRES that molar density of liquid and ice are the same -->
       </ParameterList>
 
       <ParameterList name="surface_star-ponded_depth" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="icy ponded depth" />
-      </ParameterList>
-      
-      <ParameterList name="surface_star-energy" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="surface subgrid ice energy" />
+        <Parameter name="field evaluator type" type="string" value="ponded depth" />
       </ParameterList>
 
+      <ParameterList name="surface_star-volumetric_ponded_depth" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="volumetric ponded depth" />
+      </ParameterList>
+
+      <ParameterList name="surface_star-energy" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="surface ice energy" />
+        <Parameter name="ponded depth key suffix" type="string" value="volumetric_ponded_depth" />
+        <Parameter name="molar density ice key suffix" type="string" value="molar_density_liquid" />
+      </ParameterList>
+
+
+      <!-- subgrid model parameters -->
       <ParameterList name="surface_star-microtopographic_relief" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="independent variable"/>
 	<ParameterList name="function" type="ParameterList">
@@ -668,6 +690,11 @@ Includes:
         </ParameterList>
       </ParameterList>
 
+      <ParameterList name="surface_column_*-microtopographic_relief" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="subgrid disaggregate evaluator"/>
+        <Parameter name="source domain name" type="string" value="surface_star"/>
+      </ParameterList>
+      
       <ParameterList name="surface_star-excluded_volume" type="ParameterList">
 	<Parameter name="field evaluator type" type="string" value="independent variable"/>
 	<ParameterList name="function" type="ParameterList">
@@ -683,6 +710,11 @@ Includes:
         </ParameterList>
       </ParameterList>
 
+      <ParameterList name="surface_column_*-excluded_volume" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="subgrid disaggregate evaluator"/>
+        <Parameter name="source domain name" type="string" value="surface_star"/>
+      </ParameterList>
+      
       <ParameterList name="surface_star-depression_depth" type="ParameterList">
 	<Parameter name="field evaluator type" type="string" value="independent variable"/>
 	<ParameterList name="function" type="ParameterList">
@@ -712,19 +744,14 @@ Includes:
           </ParameterList>
         </ParameterList>
       </ParameterList>
-
-      <ParameterList name="surface_star-ponded_depression_depth" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="ponded depression depth" />
-      </ParameterList>
       
-      <ParameterList name="surface_star-volumetric_ponded_depth" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value="volumetric ponded depth" />
+      <ParameterList name="surface_star-ponded_depth_minus_depression_depth" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="additive evaluator" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{ponded_depth,depression_depth}" />
+        <Parameter name="ponded_depth coefficient" type="double" value="1.0" />
+        <Parameter name="depression_depth coefficient" type="double" value="-1.0" />
       </ParameterList>
-
-      <ParameterList name="snow_column_*-volumetric_depth" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value="volumetric ponded and snow depths" />
-      </ParameterList>
-      
+     
       <ParameterList name="surface_star-fractional_conductance" type="ParameterList">
 	<Parameter name="field evaluator type" type="string" value="fractional conductance" />
       </ParameterList>
@@ -887,6 +914,7 @@ Includes:
         </ParameterList>
       </ParameterList>
 
+      <!--
       <ParameterList name="surface_star-molar_density_ice" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="eos" />
         <Parameter name="EOS basis" type="string" value="both" />
@@ -894,7 +922,7 @@ Includes:
           <Parameter name="EOS type" type="string" value="ice" />
         </ParameterList>
       </ParameterList>
-      
+-->      
       <ParameterList name="column_*-internal_energy_liquid" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="iem" />
         <ParameterList name="IEM parameters" type="ParameterList">
@@ -1059,18 +1087,6 @@ Includes:
         </ParameterList>
       </ParameterList>
 
-      <ParameterList name="column_*-effective_pressure" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="effective_pressure" />
-      </ParameterList>
-
-      <ParameterList name="surface_column_*-effective_pressure" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="effective_pressure" />
-      </ParameterList>
-
-      <ParameterList name="surface_star-effective_pressure" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="effective_pressure" />
-      </ParameterList>
-      
       <ParameterList name="surface_column_*-incoming_shortwave_radiation" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="independent variable" />
         <ParameterList name="function" type="ParameterList">
@@ -1207,7 +1223,7 @@ Includes:
 
       <ParameterList name="snow_column_*-snow_water_equivalent" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
-        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{depth,density,cell_volume}" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{volumetric_depth,density,cell_volume}" />
         <Parameter name="coefficient" type="double" value="1.e-3" /> <!-- converts to m -->
       </ParameterList>
 
