@@ -1225,6 +1225,7 @@ Includes:
         <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
         <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{volumetric_depth,density,cell_volume}" />
         <Parameter name="coefficient" type="double" value="1.e-3" /> <!-- converts to m -->
+        <Parameter name="enforce positivity" type="bool" value="true" />
       </ParameterList>
 
       <ParameterList name="snow_column_*-source_sink" type="ParameterList">
