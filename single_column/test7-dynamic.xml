@@ -7,10 +7,10 @@ Includes:
 [x] - star surface hydrology
 [x] - new surface star coupling
 
-[ ] - subgrid model
-[ ] - subgrid SEB
+[x] - subgrid model
+[x] - subgrid SEB
 [x] - subsidence
-[ ] - dynamic subgrid
+[x] - dynamic subgrid
 
 
 -->
@@ -141,6 +141,15 @@ Includes:
     <Parameter name="start time units" type="string" value="s" />
     <Parameter name="end time" type="double" value="1.0" />
     <Parameter name="end time units" type="string" value="yr" />
+    <!--
+    <ParameterList name="restart from checkpoint columns">
+      <Parameter name="checkpoint file" type="string" value="../Vrun1R0/"/>
+      <Parameter name="cycles" type="string" value="71198"/>
+    </ParameterList>
+    -->
+    <ParameterList name="required times" type="ParameterList">
+      <Parameter name="times start period stop" type="Array(double)" value="{0.0,86400.0,-1.0}" />
+    </ParameterList>
     <ParameterList name="PK tree" type="ParameterList">
       
       <ParameterList name="top level MPC" type="ParameterList">
@@ -565,6 +574,7 @@ Includes:
       <Parameter name="PK type" type="string" value="overland flow with ice" />
       <Parameter name="primary variable key" type="string" value="surface_star-pressure" />
       <Parameter name="domain name" type="string" value="surface_star" />
+      <Parameter name="subgrid model" type="bool" value="true" />
       <Parameter name="source term" type="bool" value="false" />
       <Parameter name="allow no negative ponded depths" type="bool" value="true" />
       <Parameter name="initial time step" type="double" value="86400.0" />
@@ -605,6 +615,7 @@ Includes:
         <Parameter name="domain name" type="string" value="surface_star" />
       </ParameterList>
       <ParameterList name="overland conductivity evaluator" type="ParameterList">
+	<Parameter name="subgrid model" type="bool" value="true" />
         <Parameter name="overland conductivity key" type="string" value="surface_star-overland_conductivity" />
         <ParameterList name="overland conductivity model" type="ParameterList">
           <Parameter name="Manning exponent" type="double" value="0.6666666667" />
@@ -666,6 +677,7 @@ Includes:
       </ParameterList>
       <ParameterList name="thermal conductivity evaluator" type="ParameterList">
         <Parameter name="thermal conductivity key" type="string" value="surface_star-thermal_conductivity" />
+        <Parameter name="ponded depth key" type="string" value="surface_star-volumetric_ponded_depth" />
         <ParameterList name="thermal conductivity parameters" type="ParameterList">
           <Parameter name="minimum thermal conductivity" type="double" value="1e-15" />
         </ParameterList>
@@ -690,29 +702,148 @@ Includes:
       </ParameterList>
 
       <ParameterList name="surface_column_*-water_content" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="overland pressure water content" />
+        <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{volumetric_ponded_depth, molar_density_liquid, cell_volume}" /> <!-- NOTE: this REQUIRES that molar density of liquid and ice are the same -->
       </ParameterList>
 
       <ParameterList name="surface_column_*-ponded_depth" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="ponded depth" />
       </ParameterList>
+      
+      <ParameterList name="snow_column_*-volumetric_depth" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="volumetric ponded and snow depths" />
+      </ParameterList>
+
+      <!--
+      <ParameterList name="surface_column_*-volumetric_ponded_depth" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="volumetric ponded depth" />
+      </ParameterList>
+      -->
 
       <ParameterList name="surface_column_*-energy" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="surface ice energy" />
+        <Parameter name="ponded depth key suffix" type="string" value="volumetric_ponded_depth" />
         <Parameter name="molar density ice key suffix" type="string" value="molar_density_liquid" />
       </ParameterList>
 
       <ParameterList name="surface_star-water_content" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="overland pressure water content" />
+        <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{volumetric_ponded_depth, molar_density_liquid, cell_volume}" /> <!-- NOTE: this REQUIRES that molar density of liquid and ice are the same -->
       </ParameterList>
 
       <ParameterList name="surface_star-ponded_depth" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="ponded depth" />
       </ParameterList>
-      
+
+      <ParameterList name="surface_star-volumetric_ponded_depth" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="volumetric ponded depth" />
+      </ParameterList>
+
       <ParameterList name="surface_star-energy" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="surface ice energy" />
+        <Parameter name="ponded depth key suffix" type="string" value="volumetric_ponded_depth" />
         <Parameter name="molar density ice key suffix" type="string" value="molar_density_liquid" />
+      </ParameterList>
+
+
+      <!-- subgrid model parameters -->
+
+      <ParameterList name="surface_star-microtopographic_relief">
+	<Parameter name="field evaluator type" type="string" value="secondary variable from function"/>
+	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth}"/>
+	<ParameterList name="function">
+	  <ParameterList name="function-tabular"><!--
+            <Parameter name="x values" type="Array(double)" value="{0.0,0.051424,0.195712,0.34,0.484288,0.628576,0.772864,0.917152,1.06144,1.205728,1.350016,1.494304}"/>
+            <Parameter name="y values" type="Array(double)" value="{0.387,0.387,0.387,0.387,0.402,0.454,0.525,0.606,0.692,0.779,0.872,0.964}"/>
+            <Parameter name="forms" type="Array(string)" value="{linear,linear,linear,linear,linear,linear,linear,linear,linear,linear, linear}"/>-->
+	    <Parameter name="x values" type="Array(double)" value="{0.0,0.051424,0.195712}"/>
+            <Parameter name="y values" type="Array(double)" value="{0.387,0.387,0.388}"/>
+            <Parameter name="forms" type="Array(string)" value="{linear,linear}"/>
+          </ParameterList>
+	  
+	</ParameterList>
+	<Parameter name="debug cells" type="Array(int)" value="{0}" />
+	<ParameterList name="verbose object" type="ParameterList">
+          <Parameter name="verbosity level" type="string" value="extreme" />
+        </ParameterList>
+      </ParameterList>
+ 
+      <ParameterList name="surface_column_*-microtopographic_relief" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="subgrid disaggregate evaluator"/>
+	<Parameter name="source domain name" type="string" value="surface_star"/>
+	<Parameter name="debug cells" type="Array(int)" value="{0}" />
+	<ParameterList name="verbose object" type="ParameterList">
+          <Parameter name="verbosity level" type="string" value="extreme" />
+        </ParameterList>
+      </ParameterList>
+      
+      <ParameterList name="surface_star-excluded_volume">
+	<Parameter name="field evaluator type" type="string" value="secondary variable from function"/>
+	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-microtopographic_relief}"/>
+	<ParameterList name="function">
+          <ParameterList name="function-linear">
+            <Parameter name="x0" type="Array(double)" value="{0.0}" />
+            <Parameter name="y0" type="double" value="0.0" />
+            <Parameter name="gradient" type="Array(double)" value="{0.656}" /> <!-- delta_ex = 0.656*delta_max -->
+          </ParameterList>
+	</ParameterList>
+      </ParameterList>
+      
+      <ParameterList name="surface_column_*-excluded_volume" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="subgrid disaggregate evaluator"/>
+        <Parameter name="source domain name" type="string" value="surface_star"/>
+      </ParameterList>
+
+      <ParameterList name="surface_star-drag_exponent">
+	<Parameter name="field evaluator type" type="string" value="secondary variable from function"/>
+	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth}"/>
+	<ParameterList name="function">
+	  <ParameterList name="function-tabular"><!--
+	    <Parameter name="x values" type="Array(double)" value="{0.0,0.051424,0.195712,0.34,0.484288,0.628576,0.772864,0.917152,1.06144,1.205728,1.350016,1.494304}"/>
+	    <Parameter name="y values" type="Array(double)" value="{6.2, 6.2,6.2,6.2,6.1,3.75,2.75,1.85,1.8,1.9,1.8,1.78}"/>
+            <Parameter name="forms" type="Array(string)" value="{linear,linear,linear,linear,linear,linear,linear,linear,linear,linear, linear}"/>-->
+	    	    <Parameter name="x values" type="Array(double)" value="{0.0,0.051424,0.195712}"/>
+	    <Parameter name="y values" type="Array(double)" value="{6.2, 6.2,6.2}"/>
+            <Parameter name="forms" type="Array(string)" value="{linear,linear}"/>
+          </ParameterList>
+	  
+	</ParameterList>
+      </ParameterList>
+      
+      <ParameterList name="surface_star-depression_depth">
+	<Parameter name="field evaluator type" type="string" value="secondary variable from function"/>
+	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth}"/>
+	<ParameterList name="function">
+	  <ParameterList name="function-tabular"><!--
+	    <Parameter name="x values" type="Array(double)" value="{0.0,0.051424,0.195712,0.34,0.484288,0.628576,0.772864,0.917152,1.06144,1.205728,1.350016,1.494304}"/>
+	    <Parameter name="y values" type="Array(double)" value="{0.192,0.192,0.192,0.192,0.188,0.186,0.155,0.16,0.177,0.19,0.21,0.225}"/>
+            <Parameter name="forms" type="Array(string)" value="{linear,linear,linear,linear,linear,linear,linear,linear,linear,linear, linear}"/>-->
+	    	    <Parameter name="x values" type="Array(double)" value="{0.0,0.051424,0.195712}"/>
+	    <Parameter name="y values" type="Array(double)" value="{0.192,0.192,0.192}"/>
+            <Parameter name="forms" type="Array(string)" value="{linear,linear}"/>
+          </ParameterList>
+	  
+	</ParameterList>
+      </ParameterList>
+      
+      <ParameterList name="surface_star-maximum_thaw_depth" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="maximum thaw depth" />
+	<Parameter name="checkpoint" type="bool" value="true" />
+      </ParameterList>
+       
+      <ParameterList name="surface_star-thaw_depth" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value ="thaw depth"/>
+      </ParameterList>
+
+      <ParameterList name="surface_star-ponded_depth_minus_depression_depth" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="additive evaluator" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{ponded_depth,depression_depth}" />
+        <Parameter name="ponded_depth coefficient" type="double" value="1.0" />
+        <Parameter name="depression_depth coefficient" type="double" value="-1.0" />
+      </ParameterList>
+     
+      <ParameterList name="surface_star-fractional_conductance" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="fractional conductance" />
       </ParameterList>
 
       <!-- sources and sinks -->
@@ -851,6 +982,14 @@ Includes:
         </ParameterList>
       </ParameterList>
 
+      <ParameterList name="surface_column_*-mass_density_ice" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="eos" />
+        <Parameter name="EOS basis" type="string" value="both" />
+        <ParameterList name="EOS parameters" type="ParameterList">
+          <Parameter name="EOS type" type="string" value="ice" />
+        </ParameterList>
+      </ParameterList>
+
       <ParameterList name="column_*-internal_energy_liquid" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="iem" />
         <ParameterList name="IEM parameters" type="ParameterList">
@@ -940,7 +1079,7 @@ Includes:
         <Parameter name="field evaluator type" type="string" value="column elevation" />
 	<Parameter name="includes non-rank-local dependencies" type="bool" value="true"/>
       </ParameterList>
-
+      
       <ParameterList name="column_*-cell_volume" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="deforming cell volume" />
       </ParameterList>
@@ -1135,18 +1274,18 @@ Includes:
       </ParameterList>
 
       <ParameterList name="surface_column_*-fractional_areas" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="surface balance area fractions" />
+        <Parameter name="field evaluator type" type="string" value="surface balance subgrid area fractions" />
       </ParameterList>
 
       <ParameterList name="snow_column_*-snow_water_equivalent" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
-        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{depth,density,cell_volume}" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{volumetric_depth,density,cell_volume}" />
         <Parameter name="coefficient" type="double" value="1.e-3" /> <!-- converts to m -->
         <Parameter name="enforce positivity" type="bool" value="true" />
       </ParameterList>
 
       <ParameterList name="snow_column_*-source_sink" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="surface balance" />
+        <Parameter name="field evaluator type" type="string" value="surface balance subgrid" />
         <Parameter name="save diagnostic data" type="bool" value="true" />
         <Parameter name="debug cells" type="Array(int)" value="{0}" />
         <ParameterList name="verbose object" type="ParameterList">
@@ -1155,7 +1294,7 @@ Includes:
       </ParameterList>
 
       <ParameterList name="surface_column_*-subgrid_albedos" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="albedo" />
+        <Parameter name="field evaluator type" type="string" value="albedo subgrid" />
       </ParameterList>
       
     </ParameterList>
@@ -1175,24 +1314,24 @@ Includes:
   <ParameterList name="visualization" type="ParameterList">
     <ParameterList name="surface_star" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface_star" />
-      <Parameter name="times start period stop" type="Array(double)" value="{0.0,864000.0,-1.0}" />
+      <Parameter name="times start period stop" type="Array(double)" value="{0.0,86400.0,-1.0}" />
     </ParameterList>
 
     <ParameterList name="column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump" />
-      <Parameter name="times start period stop" type="Array(double)" value="{0.0,864000.0,-1.0}" />
+      <Parameter name="times start period stop" type="Array(double)" value="{0.0,86400.0,-1.0}" />
       <Parameter name="file format" type="string" value="silo" /> 
       <Parameter name="dynamic mesh" type="bool" value="true" />
     </ParameterList>
     
     <ParameterList name="surface_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface" />
-      <Parameter name="times start period stop" type="Array(double)" value="{0.0,864000.0,-1.0}" />
+      <Parameter name="times start period stop" type="Array(double)" value="{0.0,86400.0,-1.0}" />
     </ParameterList>
     
     <ParameterList name="snow_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_snow" />
-      <Parameter name="times start period stop" type="Array(double)" value="{0.0,864000.0,-1.0}" />
+      <Parameter name="times start period stop" type="Array(double)" value="{0.0,86400.0,-1.0}" />
     </ParameterList>
     
   </ParameterList>

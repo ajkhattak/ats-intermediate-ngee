@@ -530,9 +530,7 @@ Includes:
           <Parameter name="tolerance" type="double" value="0.0" />
         </ParameterList>
       </ParameterList>
-      <ParameterList name="elevation evaluator" type="ParameterList">
-        <Parameter name="parent domain name" type="string" value="domain" />
-      </ParameterList>
+
       <ParameterList name="potential evaluator" type="ParameterList">
         <Parameter name="potential key" type="string" value="surface_star-pres_elev" />
       </ParameterList>
@@ -778,20 +776,6 @@ Includes:
         </ParameterList>
       </ParameterList>
 
-<!--      
-      <ParameterList name="molar_density_gas" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="eos" />
-        <Parameter name="EOS basis" type="string" value="molar" />
-        <Parameter name="molar density key" type="string" value="molar_density_gas" />
-        <ParameterList name="EOS parameters" type="ParameterList">
-          <Parameter name="EOS type" type="string" value="vapor in gas" />
-          <ParameterList name="gas EOS parameters" type="ParameterList">
-            <Parameter name="EOS type" type="string" value="ideal gas" />
-          </ParameterList>
-        </ParameterList>
-      </ParameterList>
--->
-
       <ParameterList name="column_*-molar_density_ice" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="eos" />
         <Parameter name="EOS basis" type="string" value="molar" />
@@ -799,26 +783,6 @@ Includes:
           <Parameter name="EOS type" type="string" value="ice" />
         </ParameterList>
       </ParameterList>
-
-      <!--
-      <ParameterList name="surface_column_*-mass_density_ice" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="eos" />
-        <Parameter name="EOS basis" type="string" value="both" />
-        <ParameterList name="EOS parameters" type="ParameterList">
-          <Parameter name="EOS type" type="string" value="ice" />
-        </ParameterList>
-      </ParameterList>
-      -->
-
-      <!--
-      <ParameterList name="surface_star-molar_density_ice" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="eos" />
-        <Parameter name="EOS basis" type="string" value="both" />
-        <ParameterList name="EOS parameters" type="ParameterList">
-          <Parameter name="EOS type" type="string" value="ice" />
-        </ParameterList>
-      </ParameterList>
-      -->
 
       <ParameterList name="column_*-internal_energy_liquid" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="iem" />
@@ -890,27 +854,6 @@ Includes:
         </ParameterList>
       </ParameterList>
 
-<!--      
-      <ParameterList name="mol_frac_gas" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="molar fraction gas" />
-        <Parameter name="molar fraction key" type="string" value="mol_frac_gas" />
-        <ParameterList name="vapor pressure model parameters" type="ParameterList">
-          <Parameter name="vapor pressure model type" type="string" value="water vapor over water/ice" />
-        </ParameterList>
-      </ParameterList>
--->
-
-<!--
-      <ParameterList name="surface_column_*-vapor_pressure" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="molar fraction gas" />
-        <Parameter name="molar fraction key" type="string" value="surface_column_*-vapor_pressure" />
-        <Parameter name="temperature key" type="string" value="surface_column_*-temperature" />
-        <ParameterList name="vapor pressure model parameters" type="ParameterList">
-          <Parameter name="vapor pressure model type" type="string" value="water vapor over water/ice" />
-        </ParameterList>
-      </ParameterList>
--->
-
       <ParameterList name="surface_star-manning_coefficient" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="independent variable" />
         <ParameterList name="function" type="ParameterList">
@@ -924,6 +867,11 @@ Includes:
             </ParameterList>
           </ParameterList>
         </ParameterList>
+      </ParameterList>
+
+      <ParameterList name="surface_star-elevation" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="column elevation" />
+	<Parameter name="includes non-rank-local dependencies" type="bool" value="true"/>
       </ParameterList>
 
       <ParameterList name="column_*-base_porosity" type="ParameterList">
@@ -1096,11 +1044,6 @@ Includes:
             <Parameter name="region" type="string" value="surface domain" />
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
-<!--
-              <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="0" />
-              </ParameterList>
--->
               <ParameterList name="function-tabular" type="ParameterList">
                 <Parameter name="file" type="string" value="../../data/Barrow_Alaska/spinup-10yr.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
