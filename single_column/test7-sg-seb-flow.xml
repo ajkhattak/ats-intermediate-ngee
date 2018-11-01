@@ -539,6 +539,7 @@ Includes:
         <Parameter name="domain name" type="string" value="surface_star" />
       </ParameterList>
       <ParameterList name="overland conductivity evaluator" type="ParameterList">
+        <Parameter name="depth key" type="string" value="surface_star-unfrozen_effective_depth" />
 	<Parameter name="subgrid model" type="bool" value="true" />
         <Parameter name="overland conductivity key" type="string" value="surface_star-overland_conductivity" />
         <ParameterList name="overland conductivity model" type="ParameterList">

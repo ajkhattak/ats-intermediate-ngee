@@ -540,6 +540,7 @@ Includes:
       </ParameterList>
       <ParameterList name="overland conductivity evaluator" type="ParameterList">
 	<Parameter name="subgrid model" type="bool" value="true" />
+        <Parameter name="depth key" type="string" value="surface_star-unfrozen_effective_depth" />
         <Parameter name="overland conductivity key" type="string" value="surface_star-overland_conductivity" />
         <ParameterList name="overland conductivity model" type="ParameterList">
           <Parameter name="Manning exponent" type="double" value="0.6666666667" />
