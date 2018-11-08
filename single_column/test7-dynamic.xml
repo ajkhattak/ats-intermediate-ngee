@@ -762,7 +762,7 @@ Includes:
 	</ParameterList>
 	<Parameter name="debug cells" type="Array(int)" value="{0}" />
 	<ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="extreme" />
+          <Parameter name="verbosity level" type="string" value="low" />
         </ParameterList>
       </ParameterList>
  
@@ -771,7 +771,7 @@ Includes:
 	<Parameter name="source domain name" type="string" value="surface_star"/>
 	<Parameter name="debug cells" type="Array(int)" value="{0}" />
 	<ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="extreme" />
+          <Parameter name="verbosity level" type="string" value="low" />
         </ParameterList>
       </ParameterList>
       
