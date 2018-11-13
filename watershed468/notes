@@ -1,15 +1,22 @@
-50cm Ice-rich zone simulations
-In the dir names '50' represent the ice-rich zone depth, and 'B' is for simulations with Barrow historical data
+Naming convention:
 
+<X>_<Y>_<Z>
 
-Brun50R1 : base run
+X: forcing data.  Either: Spinup (cycled 1985 daymet), Daymet, or Snap
+Y: initial ice rich zone depth.  Either: 40 or 50 cm
+Z: Scenario number.  Either: R1-6
 
-Brun50R2 : base + subgrid flow (all low-centered polygons)
+R1 : base run
 
-Brun50R3 : base + subgrid flow (all high-centered polygons)
+R2 : base + subgrid flow (all low-centered polygons)  (DEAD)
 
-Brun50R4 : base + subgrid flow + subgrid seb + deformation (all low-centered polygons)
+R3 : base + subgrid flow (all high-centered polygons)  (DEAD)
 
-Brun50R5 : dynamic surface subgrid (all low-centered polygons)
+R4 : base + subgrid flow + subgrid seb (all low-centered polygons)
+
+R5 : base + subgrid flow + subgrid seb (all high-centered polygons)
+
+R6 : dynamic surface subgrid (all low-centered polygons)
+
 
 
