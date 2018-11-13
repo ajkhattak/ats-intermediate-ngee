@@ -173,7 +173,7 @@
   <ParameterList name="cycle driver" type="ParameterList">
     <Parameter name="start time" type="double" value="0.0" />
     <Parameter name="start time units" type="string" value="s" />
-    <Parameter name="end time" type="double" value="11314.5" />
+    <Parameter name="end time" type="double" value="3650.5" />
     <Parameter name="end time units" type="string" value="d" />
 
     <ParameterList name="required times" type="ParameterList">
@@ -466,7 +466,7 @@
       <ParameterList name="initial condition" type="ParameterList">
         <Parameter name="initialize faces from cells" type="bool" value="true" />
         <ParameterList name="initialize from 1D column" type="ParameterList">
-          <Parameter name="file" type="string" value="../spinup/Spinup50R1/column_data.h5" />
+          <Parameter name="file" type="string" value="../../pre-spinup/Prespinup1_50/column_data.h5" />
           <Parameter name="z header" type="string" value="/z" />
           <Parameter name="f header" type="string" value="/pressure" />
           <Parameter name="coordinate orientation" type="string" value="depth" />
@@ -544,7 +544,7 @@
       <ParameterList name="initial condition" type="ParameterList">
         <Parameter name="initialize faces from cells" type="bool" value="true" />
         <ParameterList name="initialize from 1D column" type="ParameterList">
-          <Parameter name="file" type="string" value="../spinup/Spinup50R1/column_data.h5" />
+          <Parameter name="file" type="string" value="../../pre-spinup/Prespinup1_50/column_data.h5" />
           <Parameter name="z header" type="string" value="/z" />
           <Parameter name="f header" type="string" value="/temperature" />
           <Parameter name="coordinate orientation" type="string" value="depth" />
@@ -1176,7 +1176,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../../data/Barrow_Alaska/barrow1985-2015-trend.h5" />
+                <Parameter name="file" type="string" value="../../../data/Barrow_Alaska/barrow1985-100yrloop.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="incoming shortwave radiation [W m^-2]" />
               </ParameterList>
@@ -1201,7 +1201,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../../data/Barrow_Alaska/barrow1985-2015-trend.h5" />
+                <Parameter name="file" type="string" value="../../../data/Barrow_Alaska/barrow1985-100yrloop.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="air temperature [K]" />
               </ParameterList>
@@ -1221,7 +1221,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../../data/Barrow_Alaska/barrow1985-2015-trend.h5" />
+                <Parameter name="file" type="string" value="../../../data/Barrow_Alaska/barrow1985-100yrloop.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="relative humidity [-]" />
               </ParameterList>
@@ -1241,7 +1241,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-		<Parameter name="file" type="string" value="../../data/Barrow_Alaska/barrow1985-2015-trend.h5" />
+		<Parameter name="file" type="string" value="../../../data/Barrow_Alaska/barrow1985-100yrloop.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="wind speed [m s^-1]" />
               </ParameterList>
@@ -1261,7 +1261,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-		<Parameter name="file" type="string" value="../../data/Barrow_Alaska/barrow1985-2015-trend.h5" />
+		<Parameter name="file" type="string" value="../../../data/Barrow_Alaska/barrow1985-100yrloop.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="precipitation rain [m s^-1]" />
               </ParameterList>
@@ -1281,7 +1281,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-		<Parameter name="file" type="string" value="../../data/Barrow_Alaska/barrow1985-2015-trend.h5" />
+		<Parameter name="file" type="string" value="../../../data/Barrow_Alaska/barrow1985-100yrloop.h5" />
                 <Parameter name="x header" type="string" value="time [s]" />
                 <Parameter name="y header" type="string" value="precipitation snow [m SWE s^-1]" />
               </ParameterList>
@@ -1335,25 +1335,32 @@
   <ParameterList name="visualization" type="ParameterList">
     <ParameterList name="surface_star" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface_star" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
+      <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1" type="Array(double)" value="{15768000.0,31536000,-1.0}" /> <!-- Day 182-->
+      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
       <Parameter name="visualize on 3D mesh" type="bool" value="true" />
     </ParameterList>
-    <!--
+
     <ParameterList name="column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
-      <Parameter name="file format" type="string" value="silo" /> 
+      <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1" type="Array(double)" value="{15768000.0,31536000,-1.0}" /> <!-- Day 182-->
+      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
     </ParameterList>
     
     <ParameterList name="surface_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
+      <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1" type="Array(double)" value="{15768000.0,31536000,-1.0}" /> <!-- Day 182-->
+      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
     </ParameterList>
     
     <ParameterList name="snow_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_snow" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
+      <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1" type="Array(double)" value="{15768000.0,31536000,-1.0}" /> <!-- Day 182-->
+      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
     </ParameterList>
-    -->
+
   </ParameterList>
 </ParameterList>
