@@ -1,0 +1,15 @@
+50cm Ice-rich zone simulations
+In the dir names '50' represent the ice-rich zone depth, and 'B' is for simulations with Barrow historical data
+
+
+Brun50R1 : base run
+
+Brun50R2 : base + subgrid flow (all low-centered polygons)
+
+Brun50R3 : base + subgrid flow (all high-centered polygons)
+
+Brun50R4 : base + subgrid flow + subgrid seb + deformation (all low-centered polygons)
+
+Brun50R5 : dynamic surface subgrid (all low-centered polygons)
+
+
