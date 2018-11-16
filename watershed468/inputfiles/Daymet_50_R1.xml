@@ -5,7 +5,7 @@
       <Parameter name="mesh type" type="string" value="read mesh file" />
       <Parameter name="build columns from set" type="string" value="surface" />
       <ParameterList name="read mesh file parameters" type="ParameterList">
-        <Parameter name="file" type="string" value="../mesh/IR50New/barrow468-5layers-om10cm-icerich50cm-new.par" />
+        <Parameter name="file" type="string" value="../mesh/IR50/barrow468-5layers-om10cm-icerich50cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
       </ParameterList>
     </ParameterList>
@@ -89,7 +89,7 @@
     <ParameterList name="computational domain moss" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1001" />
-	<Parameter name="file" type="string" value="../mesh/IR50New/barrow468-5layers-om10cm-icerich50cm-new.par" />
+	<Parameter name="file" type="string" value="../mesh/IR50/barrow468-5layers-om10cm-icerich50cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -97,7 +97,7 @@
     <ParameterList name="computational domain peat" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1002" />
-        <Parameter name="file" type="string" value="../mesh/IR50New/barrow468-5layers-om10cm-icerich50cm-new.par" />
+        <Parameter name="file" type="string" value="../mesh/IR50/barrow468-5layers-om10cm-icerich50cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -105,7 +105,7 @@
     <ParameterList name="computational domain upper mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1003" />
-        <Parameter name="file" type="string" value="../mesh/IR50New/barrow468-5layers-om10cm-icerich50cm-new.par" />
+        <Parameter name="file" type="string" value="../mesh/IR50/barrow468-5layers-om10cm-icerich50cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -113,7 +113,7 @@
     <ParameterList name="computational domain ice rich" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1004" />
-        <Parameter name="file" type="string" value="../mesh/IR50New/barrow468-5layers-om10cm-icerich50cm-new.par" />
+        <Parameter name="file" type="string" value="../mesh/IR50/barrow468-5layers-om10cm-icerich50cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -121,7 +121,7 @@
     <ParameterList name="computational domain lower mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1005" />
-        <Parameter name="file" type="string" value="../mesh/IR50New/barrow468-5layers-om10cm-icerich50cm-new.par" />
+        <Parameter name="file" type="string" value="../mesh/IR50/barrow468-5layers-om10cm-icerich50cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -137,7 +137,7 @@
     <ParameterList name="surface" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="2" />
-        <Parameter name="file" type="string" value="../mesh/IR50New/barrow468-5layers-om10cm-icerich50cm-new.par" />
+        <Parameter name="file" type="string" value="../mesh/IR50/barrow468-5layers-om10cm-icerich50cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -163,7 +163,7 @@
     <ParameterList name="bottom face" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1" />
-        <Parameter name="file" type="string" value="../mesh/IR50New/barrow468-5layers-om10cm-icerich50cm-new.par" />
+        <Parameter name="file" type="string" value="../mesh/IR50/barrow468-5layers-om10cm-icerich50cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -520,8 +520,6 @@
       <Parameter name="source term is differentiable" type="bool" value="false" />
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="supress advective terms in preconditioner" type="bool" value="true" />
-      <Parameter name="max valid change" type="double" value="1." />
-<!--      <Parameter name="limit correction to temperature change [K]" type="double" value="1.0" />-->
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
         <Parameter name="verbosity level" type="string" value="none" />

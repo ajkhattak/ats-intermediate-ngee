@@ -518,8 +518,6 @@
       <Parameter name="source term is differentiable" type="bool" value="false" />
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="supress advective terms in preconditioner" type="bool" value="false" />
-      <Parameter name="max valid change" type="double" value="1." />
-<!--      <Parameter name="limit correction to temperature change [K]" type="double" value="1.0" />-->
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
         <Parameter name="verbosity level" type="string" value="none" />
