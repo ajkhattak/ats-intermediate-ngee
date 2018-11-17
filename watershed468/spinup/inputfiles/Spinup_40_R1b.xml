@@ -303,7 +303,8 @@
     <ParameterList name="subsurface flow" type="ParameterList">
       <Parameter name="PK type" type="string" value="permafrost flow" />
       <Parameter name="primary variable key" type="string" value="pressure" />
-      <Parameter name="source term" type="bool" value="false" />
+      <Parameter name="source term" type="bool" value="true" />
+      <Parameter name="source term is differentiable" type="bool" value="false" />
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="relative permeability method" type="string" value="upwind with Darcy flux" />
       <Parameter name="permeability rescaling" type="double" value="10000000.0" />
@@ -312,7 +313,6 @@
       <Parameter name="source key" type="string" value="mass_source" />
       <Parameter name="max valid change in saturation in a time step [-]" type="double" value="0.1" />
       <Parameter name="max valid change in ice saturation in a time step [-]" type="double" value="0.1" />
-      <Parameter name="source term is differentiable" type="bool" value="true" />
 
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
@@ -337,8 +337,10 @@
           <ParameterList name="moss" type="ParameterList">
             <Parameter name="region" type="string" value="computational domain moss" />
             <Parameter name="WRM Type" type="string" value="van Genuchten" />
-            <Parameter name="van Genuchten alpha" type="double" value="0.0023" />
-            <Parameter name="van Genuchten m" type="double" value="0.2754" />
+            <Parameter name="van Genuchten alpha" type="double" value="0.00051" />
+            <Parameter name="van Genuchten m" type="double" value="0.19" />
+<!--            <Parameter name="van Genuchten alpha" type="double" value="0.0023" />
+            <Parameter name="van Genuchten m" type="double" value="0.2754" />-->
             <Parameter name="residual saturation" type="double" value="0.0" />
 	    <Parameter name="smoothing interval width [saturation]" type="double" value="0.1" />
           </ParameterList>
@@ -374,10 +376,10 @@
       <Parameter name="primary variable key" type="string" value="surface-pressure" />
       <Parameter name="domain name" type="string" value="surface" />
       <Parameter name="source term" type="bool" value="true" />
+      <Parameter name="source term is differentiable" type="bool" value="false" />
+      <Parameter name="mass source in meters" type="bool" value="true" />
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="source key" type="string" value="surface-mass_source" />
-      <Parameter name="mass source in meters" type="bool" value="true" />
-      <Parameter name="source term is differentiable" type="bool" value="false" />
 
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
@@ -391,7 +393,7 @@
       <ParameterList name="boundary conditions" type="ParameterList">
 	<ParameterList name="head" type="ParameterList">
           <ParameterList name="surface boundary" type="ParameterList">
-            <Parameter name="regions" type="Array(string)" value="{surface outlet}" />
+            <Parameter name="regions" type="Array(string)" value="{surface domain}" />
             <ParameterList name="boundary head" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
                 <Parameter name="value" type="double" value="0.0" />
@@ -418,13 +420,11 @@
     <ParameterList name="subsurface energy" type="ParameterList">
       <Parameter name="PK type" type="string" value="three-phase energy" />
       <Parameter name="primary variable key" type="string" value="temperature" />
-      <Parameter name="source term" type="bool" value="false" />
+      <Parameter name="source term" type="bool" value="true" />
+      <Parameter name="source term is differentiable" type="bool" value="false" />
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="supress advective terms in preconditioner" type="bool" value="false" />
-<!--      <Parameter name="limit correction to temperature change [K]" type="double" value="1.0" />-->
-      <Parameter name="max valid change" type="double" value="1." />
       <Parameter name="energy source" type="string" value="total_energy_source" />
-      <Parameter name="source term is differentiable" type="bool" value="true" />
 
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
@@ -459,7 +459,8 @@
             <Parameter name="thermal conductivity type" type="string" value="three-phase wet/dry" />
             <Parameter name="thermal conductivity, saturated (unfrozen) [W/(m-K)]" type="double" value="0.6" />
             <Parameter name="thermal conductivity, dry [W/(m-K)]" type="double" value="0.1" />
-	    <Parameter name="saturated beta frozen [-]" type="double" value="0.56" />
+	    <Parameter name="saturated beta frozen [-]" type="double" value="0.6" />
+<!--	    <Parameter name="saturated beta frozen [-]" type="double" value="0.56" />-->
             <Parameter name="unsaturated alpha frozen [-]" type="double" value="1.0" />
             <Parameter name="unsaturated alpha unfrozen [-]" type="double" value="0.5" />
           </ParameterList>
@@ -495,13 +496,13 @@
       <Parameter name="primary variable key" type="string" value="surface-temperature" />
       <Parameter name="domain name" type="string" value="surface" />
       <Parameter name="source term" type="bool" value="true" />
+      <Parameter name="source term is differentiable" type="bool" value="true" />
+      <Parameter name="source term finite difference" type="bool" value="true" />
       <Parameter name="flux key" type="string" value="surface-mass_flux" />
-      <Parameter name="supress advective terms in preconditioner" type="bool" value="false" />
+      <Parameter name="supress advective terms in preconditioner" type="bool" value="true" />
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="upwind conductivity method" type="string" value="arithmetic mean" />
       <Parameter name="energy source" type="string" value="surface-total_energy_source" />
-      <Parameter name="source term is differentiable" type="bool" value="true" />
-      <Parameter name="source term finite difference" type="bool" value="true" />
 
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
@@ -547,6 +548,7 @@
       <Parameter name="domain name" type="string" value="snow" />
       <Parameter name="primary variable key" type="string" value="snow-depth" />
       <Parameter name="conserved quantity key" type="string" value="snow-snow_water_equivalent" />
+      <Parameter name="source term" type="bool" value="true" />
       <Parameter name="source key" type="string" value="snow-source_sink" />
       <Parameter name="source term is differentiable" type="bool" value="false" />
       <ParameterList name="initial condition" type="ParameterList">
@@ -794,7 +796,8 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="0.9" />
+                <Parameter name="value" type="double" value="0.87" />
+<!--                <Parameter name="value" type="double" value="0.9" />-->
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -845,7 +848,8 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="1.75e-11" />
+                <Parameter name="value" type="double" value="9.38e-12" />
+<!--                <Parameter name="value" type="double" value="1.75e-11" />-->
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -1009,7 +1013,6 @@
         <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
         <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{depth,density,cell_volume}" />
         <Parameter name="coefficient" type="double" value="1.e-3" /> <!-- converts to m -->
-        <Parameter name="enforce positivity" type="bool" value="true" />
       </ParameterList>
 
       <ParameterList name="snow-source_sink" type="ParameterList">
@@ -1043,24 +1046,33 @@
   <ParameterList name="visualization" type="ParameterList">
     <ParameterList name="surface" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface" />
-      <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000,-1.0}" /> <!-- Day 1-->
-      <Parameter name="times start period stop 1" type="Array(double)" value="{15768000.0,31536000,-1.0}" /> <!-- Day 182-->
-      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
+      <Parameter name="times start period stop 0" type="Array(double)" value="{0.5,365.,-1.0}" />
+      <Parameter name="times start period stop 0 units" type="string" value="d" />
+      <Parameter name="times start period stop 1" type="Array(double)" value="{182.5,365.,-1.0}" />
+      <Parameter name="times start period stop 1 units" type="string" value="d" />
+      <Parameter name="times" type="Array(double)" value="{10.}" />
+      <Parameter name="times units" type="string" value="noleap" />
       <Parameter name="visualize on 3D mesh" type="bool" value="true" />
     </ParameterList>
 
     <ParameterList name="domain" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump" />
-      <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000,-1.0}" /> <!-- Day 1-->
-      <Parameter name="times start period stop 1" type="Array(double)" value="{15768000.0,31536000,-1.0}" /> <!-- Day 182-->
-      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
+      <Parameter name="times start period stop 0" type="Array(double)" value="{0.5,365.,-1.0}" />
+      <Parameter name="times start period stop 0 units" type="string" value="d" />
+      <Parameter name="times start period stop 1" type="Array(double)" value="{182.5,365.,-1.0}" />
+      <Parameter name="times start period stop 1 units" type="string" value="d" />
+      <Parameter name="times" type="Array(double)" value="{10.}" />
+      <Parameter name="times units" type="string" value="noleap" />
     </ParameterList>
     
     <ParameterList name="snow" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_snow" />
-      <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000,-1.0}" /> <!-- Day 1-->
-      <Parameter name="times start period stop 1" type="Array(double)" value="{15768000.0,31536000,-1.0}" /> <!-- Day 182-->
-      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
+      <Parameter name="times start period stop 0" type="Array(double)" value="{0.5,365.,-1.0}" />
+      <Parameter name="times start period stop 0 units" type="string" value="d" />
+      <Parameter name="times start period stop 1" type="Array(double)" value="{182.5,365.,-1.0}" />
+      <Parameter name="times start period stop 1 units" type="string" value="d" />
+      <Parameter name="times" type="Array(double)" value="{10.}" />
+      <Parameter name="times units" type="string" value="noleap" />
     </ParameterList>
 
   </ParameterList>
