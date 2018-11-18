@@ -132,7 +132,7 @@ Includes:
     <Parameter name="start time" type="double" value="0.0" />
     <Parameter name="start time units" type="string" value="s" />
     <Parameter name="end time" type="double" value="1.0" />
-    <Parameter name="end time units" type="string" value="yr" />
+    <Parameter name="end time units" type="string" value="noleap" />
     <ParameterList name="PK tree" type="ParameterList">
 
       <ParameterList name="top level MPC" type="ParameterList">
@@ -188,7 +188,7 @@ Includes:
       <Parameter name="PK type" type="string" value="strong MPC" />
       <Parameter name="PKs order" type="Array(string)" value="{snow_column_*-SEB,column_*-permafrost}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
       <ParameterList name="time integrator" type="ParameterList">
         <Parameter name="extrapolate initial guess" type="bool" value="true" />
@@ -202,11 +202,11 @@ Includes:
           <Parameter name="diverged tolerance" type="double" value="1000000.0" />
           <Parameter name="limit iterations" type="int" value="21" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="none" />
+            <Parameter name="verbosity level" type="string" value="high" />
           </ParameterList>
         </ParameterList>
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
+          <Parameter name="verbosity level" type="string" value="high" />
         </ParameterList>
         <ParameterList name="timestep controller smarter parameters" type="ParameterList">
           <Parameter name="max iterations" type="int" value="18" />
@@ -480,7 +480,7 @@ Includes:
           <Parameter name="diverged tolerance" type="double" value="1000000.0" />
           <Parameter name="limit iterations" type="int" value="21" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="none" />
+            <Parameter name="verbosity level" type="string" value="high" />
           </ParameterList>
         </ParameterList>
         <ParameterList name="timestep controller smarter parameters" type="ParameterList">
@@ -493,9 +493,12 @@ Includes:
           <Parameter name="growth wait after fail" type="int" value="2" />
           <Parameter name="count before increasing increase factor" type="int" value="2" />
         </ParameterList>
+        <ParameterList name="verbose object" type="ParameterList">
+          <Parameter name="verbosity level" type="string" value="high" />
+        </ParameterList>
       </ParameterList>
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
     </ParameterList>
     
@@ -508,7 +511,7 @@ Includes:
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="extreme" />
+        <Parameter name="verbosity level" type="string" value="low" />
       </ParameterList>
       <ParameterList name="diffusion" type="ParameterList">
         <Parameter name="discretization primary" type="string" value="fv: default" />
@@ -889,7 +892,7 @@ Includes:
         <Parameter name="field evaluator type" type="string" value="column elevation" />
 	<Parameter name="includes non-rank-local dependencies" type="bool" value="true"/>
 	<ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="extreme" />
+          <Parameter name="verbosity level" type="string" value="low" />
 	</ParameterList>
       </ParameterList>
 
@@ -1089,7 +1092,6 @@ Includes:
         <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
         <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{depth,density,cell_volume}" />
         <Parameter name="coefficient" type="double" value="1.e-3" /> <!-- converts to m -->
-        <Parameter name="enforce positivity" type="bool" value="true" />
       </ParameterList>
 
       <ParameterList name="snow_column_*-source_sink" type="ParameterList">

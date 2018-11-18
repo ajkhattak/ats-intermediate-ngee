@@ -132,7 +132,7 @@ Includes:
     <Parameter name="start time" type="double" value="0.0" />
     <Parameter name="start time units" type="string" value="s" />
     <Parameter name="end time" type="double" value="1.0" />
-    <Parameter name="end time units" type="string" value="yr" />
+    <Parameter name="end time units" type="string" value="noleap" />
     <ParameterList name="PK tree" type="ParameterList">
 
       <ParameterList name="top level MPC" type="ParameterList">
@@ -1078,7 +1078,7 @@ Includes:
         <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
         <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{depth,density,cell_volume}" />
         <Parameter name="coefficient" type="double" value="1.e-3" /> <!-- converts to m -->
-        <Parameter name="enforce positivity" type="bool" value="true" />
+        <Parameter name="enforce positivity" type="bool" value="false" />
       </ParameterList>
 
       <ParameterList name="snow_column_*-source_sink" type="ParameterList">
