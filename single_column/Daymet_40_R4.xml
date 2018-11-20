@@ -354,21 +354,18 @@
       <ParameterList name="preconditioner" type="ParameterList">
         <Parameter name="preconditioner type" type="string" value="identity" />
       </ParameterList>
+
       <ParameterList name="linear solver" type="ParameterList">
-        <Parameter name="iterative method" type="string" value="gmres" />
-        <ParameterList name="gmres parameters" type="ParameterList">
-          <Parameter name="preconditioning strategy" type="string" value="left" />
+        <Parameter name="iterative method" type="string" value="nka" />
+        <ParameterList name="nka parameters" type="ParameterList">
           <Parameter name="error tolerance" type="double" value="1e-06" />
-          <Parameter name="convergence criteria" type="Array(string)" value="{relative residual, make one iteration}" />
-          <Parameter name="maximum number of iterations" type="int" value="80" />
+          <Parameter name="maximum number of iterations" type="int" value="10" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="high" />
+            <Parameter name="verbosity level" type="string" value="medium" />
           </ParameterList>
         </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="high" />
-        </ParameterList>
       </ParameterList>
+
     </ParameterList>
 
     <ParameterList name="column_*-permafrost" type="ParameterList">
@@ -657,6 +654,7 @@
       <Parameter name="primary variable key" type="string" value="surface_star-pressure" />
       <Parameter name="domain name" type="string" value="surface_star" />
       <Parameter name="source term" type="bool" value="false" />
+      <Parameter name="subgrid model" type="bool" value="true" />
       <Parameter name="allow no negative ponded depths" type="bool" value="true" />
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
@@ -666,9 +664,11 @@
       <ParameterList name="diffusion" type="ParameterList">
         <Parameter name="discretization primary" type="string" value="fv: default" />
       </ParameterList>
+<!--
       <ParameterList name="diffusion preconditioner" type="ParameterList">
         <Parameter name="Newton correction" type="string" value="true Jacobian" />
       </ParameterList>
+-->
       <ParameterList name="boundary conditions" type="ParameterList">
 	<ParameterList name="head" type="ParameterList">
           <ParameterList name="surface boundary" type="ParameterList">
@@ -713,8 +713,9 @@
         <Parameter name="domain name" type="string" value="surface_star" />
       </ParameterList>
       <ParameterList name="overland conductivity evaluator" type="ParameterList">
-        <Parameter name="depth key" type="string" value="surface_star-unfrozen_effective_depth" />
         <Parameter name="overland conductivity key" type="string" value="surface_star-overland_conductivity" />
+        <Parameter name="depth key" type="string" value="surface_star-unfrozen_effective_depth" />
+	<Parameter name="subgrid model" type="bool" value="true" />
         <ParameterList name="overland conductivity model" type="ParameterList">
           <Parameter name="Manning exponent" type="double" value="0.6666666667" />
           <Parameter name="slope regularization epsilon" type="double" value="0.01" />
@@ -852,7 +853,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="0.5" />
+                <Parameter name="value" type="double" value="0.361" />
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -872,7 +873,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="0.25" />
+                <Parameter name="value" type="double" value="0.185" />
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -892,7 +893,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="0.05" />
+                <Parameter name="value" type="double" value="0.18" />
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -907,7 +908,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="1.0" />
+                <Parameter name="value" type="double" value="7.0" />
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -998,6 +999,7 @@
       
       <ParameterList name="surface_star-unfrozen_effective_depth" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="unfrozen effective depth" />
+        <Parameter name="ice retardation exponent [-]" type="double" value="2" />
       </ParameterList>
 
       <ParameterList name="column_*-molar_density_liquid" type="ParameterList">
