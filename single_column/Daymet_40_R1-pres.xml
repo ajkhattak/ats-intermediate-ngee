@@ -254,6 +254,7 @@
       <Parameter name="PKs order" type="Array(string)" value="{surface star system, column_*-coupler}" />
       <Parameter name="domain name" type="string" value="surface_column" />
       <Parameter name="star domain name" type="string" value="surface_star" />
+      <Parameter name="pressure coupling" type="bool" value="true" />
     </ParameterList>
 
     <ParameterList name="column_*-coupler" type="ParameterList">
@@ -316,7 +317,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="0.08667161" />
+                <Parameter name="value" type="double" value="0.08679265" />
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -330,7 +331,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="320.06022018" />
+                <Parameter name="value" type="double" value="320.08739142" />
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -344,7 +345,7 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="48.33887059" />
+                <Parameter name="value" type="double" value="48.35291796" />
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -830,17 +831,12 @@
       </ParameterList>
 
       <!-- sources and sinks -->
-      <ParameterList name="surface_column_*-mass_source_sink" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="additive evaluator" />
-        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{mass_source_mols,mass_lateral_flow_source}" />
-      </ParameterList>
-
       <ParameterList name="surface_column_*-energy_source_sink" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="additive evaluator" />
-        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{total_energy_source,energy_lateral_flow_source,surface_subsurface_advected_energy_flux}" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{total_energy_source,surface_subsurface_advected_energy_flux}" />
       </ParameterList>
       
-      <ParameterList name="surface_column_*-mass_source_mols" type="ParameterList">
+      <ParameterList name="surface_column_*-mass_source_sink" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
         <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{molar_density_liquid, mass_source}" />
       </ParameterList>

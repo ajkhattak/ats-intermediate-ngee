@@ -254,6 +254,7 @@
       <Parameter name="PKs order" type="Array(string)" value="{surface star system, column_*-coupler}" />
       <Parameter name="domain name" type="string" value="surface_column" />
       <Parameter name="star domain name" type="string" value="surface_star" />
+      <Parameter name="subcycling" type="bool" value="true" />
     </ParameterList>
 
     <ParameterList name="column_*-coupler" type="ParameterList">
