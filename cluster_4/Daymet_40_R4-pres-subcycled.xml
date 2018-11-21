@@ -5,7 +5,7 @@
       <Parameter name="mesh type" type="string" value="read mesh file" />
       <Parameter name="build columns from set" type="string" value="surface" />
       <ParameterList name="read mesh file parameters" type="ParameterList">
-        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
       </ParameterList>
     </ParameterList>
@@ -89,7 +89,7 @@
     <ParameterList name="computational domain moss" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1001" />
-	<Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
+	<Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -97,7 +97,7 @@
     <ParameterList name="computational domain peat" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1002" />
-        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -105,7 +105,7 @@
     <ParameterList name="computational domain upper mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1003" />
-        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -113,7 +113,7 @@
     <ParameterList name="computational domain ice rich" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1004" />
-        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -121,7 +121,7 @@
     <ParameterList name="computational domain lower mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1005" />
-        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -137,7 +137,7 @@
     <ParameterList name="surface" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="2" />
-        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -163,7 +163,7 @@
     <ParameterList name="bottom face" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1" />
-        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -183,7 +183,7 @@
 
     <ParameterList name="PK tree" type="ParameterList">
       <ParameterList name="top level MPC" type="ParameterList">
-        <Parameter name="PK type" type="string" value="permafrost columns operator splitting, flux" />
+        <Parameter name="PK type" type="string" value="permafrost columns operator splitting, flux, subcycled" />
         <ParameterList name="column_*-coupler" type="ParameterList">
           <Parameter name="PK type" type="string" value="strong MPC" />
           <ParameterList name="snow_column_*-SEB" type="ParameterList">
@@ -250,10 +250,11 @@
   <ParameterList name="PKs" type="ParameterList">
 
     <ParameterList name="top level MPC" type="ParameterList">
-      <Parameter name="PK type" type="string" value="permafrost columns operator splitting, flux" />
+      <Parameter name="PK type" type="string" value="permafrost columns operator splitting, flux, subcycled" />
       <Parameter name="PKs order" type="Array(string)" value="{surface star system, column_*-coupler}" />
       <Parameter name="domain name" type="string" value="surface_column" />
       <Parameter name="star domain name" type="string" value="surface_star" />
+      <Parameter name="pressure coupling" type="bool" value="true" />
     </ParameterList>
 
     <ParameterList name="column_*-coupler" type="ParameterList">
@@ -949,17 +950,12 @@
       </ParameterList>
 
       <!-- sources and sinks -->
-      <ParameterList name="surface_column_*-mass_source_sink" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="additive evaluator" />
-        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{mass_source_mols,mass_lateral_flow_source}" />
-      </ParameterList>
-
       <ParameterList name="surface_column_*-energy_source_sink" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="additive evaluator" />
-        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{total_energy_source,energy_lateral_flow_source,surface_subsurface_advected_energy_flux}" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{total_energy_source,surface_subsurface_advected_energy_flux}" />
       </ParameterList>
       
-      <ParameterList name="surface_column_*-mass_source_mols" type="ParameterList">
+      <ParameterList name="surface_column_*-mass_source_sink" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
         <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{molar_density_liquid, mass_source}" />
       </ParameterList>
