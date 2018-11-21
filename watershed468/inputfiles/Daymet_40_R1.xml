@@ -5,7 +5,7 @@
       <Parameter name="mesh type" type="string" value="read mesh file" />
       <Parameter name="build columns from set" type="string" value="surface" />
       <ParameterList name="read mesh file parameters" type="ParameterList">
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
       </ParameterList>
     </ParameterList>
@@ -89,7 +89,7 @@
     <ParameterList name="computational domain moss" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1001" />
-	<Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.exo" />
+	<Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -97,7 +97,7 @@
     <ParameterList name="computational domain peat" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1002" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -105,7 +105,7 @@
     <ParameterList name="computational domain upper mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1003" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -113,7 +113,7 @@
     <ParameterList name="computational domain ice rich" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1004" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -121,7 +121,7 @@
     <ParameterList name="computational domain lower mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1005" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -137,7 +137,7 @@
     <ParameterList name="surface" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="2" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -163,7 +163,7 @@
     <ParameterList name="bottom face" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -1328,25 +1328,37 @@
   <ParameterList name="visualization" type="ParameterList">
     <ParameterList name="surface_star" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface_star" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,864000.0,-1.0}" />
+      <Parameter name="times start period stop 0" type="Array(double)" value="{0.5,5.,-1.0}" /> <!-- vis surface every 5 days -->
+      <Parameter name="times start period stop 0 units" type="string" value="d" /> <!-- Day 1-->
+      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
       <Parameter name="visualize on 3D mesh" type="bool" value="true" />
     </ParameterList>
-    
+
     <ParameterList name="column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,864000.0,-1.0}" />
-      <Parameter name="file format" type="string" value="silo" /> 
+      <Parameter name="times start period stop 0" type="Array(double)" value="{0.5,365.,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 0 units" type="string" value="d" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1" type="Array(double)" value="{182.5,365.,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1 units" type="string" value="d" /> <!-- Day 1-->
+      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
     </ParameterList>
-
+    
     <ParameterList name="surface_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,864000.0,-1.0}" />
+      <Parameter name="times start period stop 0" type="Array(double)" value="{0.5,365.,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 0 units" type="string" value="d" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1" type="Array(double)" value="{182.5,365.,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1 units" type="string" value="d" /> <!-- Day 1-->
+      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
     </ParameterList>
     
     <ParameterList name="snow_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_snow" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,864000.0,-1.0}" />
+      <Parameter name="times start period stop 0" type="Array(double)" value="{0.5,365.,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 0 units" type="string" value="d" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1" type="Array(double)" value="{182.5,365.,-1.0}" /> <!-- Day 1-->
+      <Parameter name="times start period stop 1 units" type="string" value="d" /> <!-- Day 1-->
+      <Parameter name="times" type="Array(double)" value="{3153600000.}" /> <!-- Last day of sim-->
     </ParameterList>
-
   </ParameterList>
 </ParameterList>
