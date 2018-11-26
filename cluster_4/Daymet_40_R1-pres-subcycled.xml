@@ -5,7 +5,7 @@
       <Parameter name="mesh type" type="string" value="read mesh file" />
       <Parameter name="build columns from set" type="string" value="surface" />
       <ParameterList name="read mesh file parameters" type="ParameterList">
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
       </ParameterList>
     </ParameterList>
@@ -89,7 +89,7 @@
     <ParameterList name="computational domain moss" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1001" />
-	<Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
+	<Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -97,7 +97,7 @@
     <ParameterList name="computational domain peat" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1002" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -105,7 +105,7 @@
     <ParameterList name="computational domain upper mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1003" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -113,7 +113,7 @@
     <ParameterList name="computational domain ice rich" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1004" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -121,7 +121,7 @@
     <ParameterList name="computational domain lower mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1005" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -137,7 +137,7 @@
     <ParameterList name="surface" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="2" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -149,11 +149,11 @@
     
     <ParameterList name="surface outletbox" type="ParameterList">
       <ParameterList name="region: box" type="ParameterList">
-        <Parameter name="low coordinate" type="Array(double)" value="{585867,7.91046e+06}" />
-        <Parameter name="high coordinate" type="Array(double)" value="{585871,7.91045e+06}" />
+        <Parameter name="low coordinate" type="Array(double)" value="{169.781,122.598}" />
+        <Parameter name="high coordinate" type="Array(double)" value="{175.054,135.22}" />
       </ParameterList>
     </ParameterList>
-    
+
     <ParameterList name="surface outlet" type="ParameterList">
       <ParameterList name="region: logical" type="ParameterList">
         <Parameter name="operation" type="string" value="intersect"/>
@@ -163,7 +163,7 @@
     <ParameterList name="bottom face" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1" />
-        <Parameter name="file" type="string" value="../mesh/IR40/barrow468-5layers-om10cm-icerich40cm.par" />
+        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -173,7 +173,8 @@
   <ParameterList name="cycle driver" type="ParameterList">
     <Parameter name="start time" type="double" value="0.0" />
     <Parameter name="start time units" type="string" value="s" />
-    <Parameter name="end time" type="double" value="11314.5" />
+<!--    <Parameter name="end time" type="double" value="11314.5" />-->
+    <Parameter name="end time" type="double" value="3650." />
     <Parameter name="end time units" type="string" value="d" />
 
     <ParameterList name="required times" type="ParameterList">
@@ -181,7 +182,6 @@
     </ParameterList>
 
     <ParameterList name="PK tree" type="ParameterList">
-
       <ParameterList name="top level MPC" type="ParameterList">
         <Parameter name="PK type" type="string" value="permafrost columns operator splitting, flux, subcycled" />
         <ParameterList name="column_*-coupler" type="ParameterList">
@@ -241,15 +241,11 @@
       <Parameter name="observation output filename" type="string" value="surface_flux-day.dat" />
       <Parameter name="times start period stop" type="Array(double)" value="{43200.,86400.0,-1.0}" />
     </ParameterList>
-
   </ParameterList>
 
   <ParameterList name="checkpoints" type="ParameterList">
     <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000.0,-1}" />
-    <Parameter name="times start period stop 1" type="Array(double)" value="{43200.0,864000.0,950400}" />
-    <Parameter name="times start period stop 2" type="Array(double)" value="{43200.0,12182400,12268800.0}" />
   </ParameterList>
-
 
   <ParameterList name="PKs" type="ParameterList">
 
@@ -258,9 +254,7 @@
       <Parameter name="PKs order" type="Array(string)" value="{surface star system, column_*-coupler}" />
       <Parameter name="domain name" type="string" value="surface_column" />
       <Parameter name="star domain name" type="string" value="surface_star" />
-      <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="high" />
-      </ParameterList>
+      <Parameter name="pressure coupling" type="bool" value="true" />
     </ParameterList>
 
     <ParameterList name="column_*-coupler" type="ParameterList">
@@ -269,6 +263,7 @@
       <ParameterList name="verbose object" type="ParameterList">
         <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
+
       <ParameterList name="time integrator" type="ParameterList">
         <Parameter name="extrapolate initial guess" type="bool" value="true" />
         <Parameter name="solver type" type="string" value="nka_bt_ats" />
@@ -281,19 +276,19 @@
           <Parameter name="diverged tolerance" type="double" value="1000000.0" />
           <Parameter name="limit iterations" type="int" value="21" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="medium" />
+            <Parameter name="verbosity level" type="string" value="high" />
           </ParameterList>
         </ParameterList>
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="medium" />
+          <Parameter name="verbosity level" type="string" value="high" />
         </ParameterList>
         <ParameterList name="timestep controller smarter parameters" type="ParameterList">
           <Parameter name="max iterations" type="int" value="18" />
           <Parameter name="min iterations" type="int" value="10" />
-          <Parameter name="time step reduction factor" type="double" value="0.75" />
-          <Parameter name="time step increase factor" type="double" value="1.25" />
+          <Parameter name="time step reduction factor" type="double" value="0.5" />
+          <Parameter name="time step increase factor" type="double" value="1.5" />
           <Parameter name="max time step" type="double" value="86400.0" />
-          <Parameter name="min time step" type="double" value="1e-10" />
+          <Parameter name="min time step" type="double" value="1e-6" />
           <Parameter name="growth wait after fail" type="int" value="2" />
           <Parameter name="count before increasing increase factor" type="int" value="2" />
         </ParameterList>
@@ -308,12 +303,13 @@
       <Parameter name="source term" type="bool" value="true" />
       <Parameter name="source key suffix" type="string" value="source_sink" />
       <Parameter name="source term is differentiable" type="bool" value="false" />
-      <Parameter name="roughness length of bare ground [m]" type="double" value="0.04" />
-      <Parameter name="roughness length of snow-covered ground [m]" type="double" value="0.004" />
+
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
+
+      <!-- these are lifted from the same output as the column_data, and could be put there -->
       <ParameterList name="initial condition" type="ParameterList">
         <ParameterList name="function" type="ParameterList">
           <ParameterList name="initial head" type="ParameterList">
@@ -321,14 +317,43 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="0.5" />
+                <Parameter name="value" type="double" value="0.08679265" />
               </ParameterList>
             </ParameterList>
           </ParameterList>
         </ParameterList>
       </ParameterList>
+
+      <ParameterList name="initial condition snow density" type="ParameterList">
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="initial head" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <ParameterList name="function-constant" type="ParameterList">
+                <Parameter name="value" type="double" value="320.08739142" />
+              </ParameterList>
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+
+      <ParameterList name="initial condition snow age" type="ParameterList">
+        <ParameterList name="function" type="ParameterList">
+          <ParameterList name="initial head" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <ParameterList name="function-constant" type="ParameterList">
+                <Parameter name="value" type="double" value="48.35291796" />
+              </ParameterList>
+            </ParameterList>
+          </ParameterList>
+        </ParameterList>
+      </ParameterList>
+      
       <ParameterList name="preconditioner" type="ParameterList">
-        <Parameter name="preconditioner type" type="string" value="diagonal" />
+        <Parameter name="preconditioner type" type="string" value="identity" />
       </ParameterList>
       <ParameterList name="linear solver" type="ParameterList">
         <Parameter name="iterative method" type="string" value="gmres" />
@@ -338,11 +363,11 @@
           <Parameter name="convergence criteria" type="Array(string)" value="{relative residual, make one iteration}" />
           <Parameter name="maximum number of iterations" type="int" value="80" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="none" />
+            <Parameter name="verbosity level" type="string" value="high" />
           </ParameterList>
         </ParameterList>
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
+          <Parameter name="verbosity level" type="string" value="high" />
         </ParameterList>
       </ParameterList>
     </ParameterList>
@@ -357,20 +382,20 @@
       <Parameter name="supress Jacobian terms: div hq / dp,T" type="bool" value="true" />
       <Parameter name="dump preconditioner" type="bool" value="false" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
       <ParameterList name="ewc delegate" type="ParameterList">
         <Parameter name="predictor type" type="string" value="smart ewc" />
         <Parameter name="debug cells" type="Array(int)" value="{0}" />
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
+          <Parameter name="verbosity level" type="string" value="high" />
         </ParameterList>
       </ParameterList>
       <ParameterList name="surface ewc delegate" type="ParameterList">
         <Parameter name="predictor type" type="string" value="none" />
         <Parameter name="debug cells" type="Array(int)" value="{0}" />
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
+          <Parameter name="verbosity level" type="string" value="medium" />
         </ParameterList>
       </ParameterList>
       <ParameterList name="water delegate" type="ParameterList">
@@ -379,7 +404,7 @@
         <Parameter name="cap over atmospheric" type="double" value="0.1" />
         <Parameter name="debug cells" type="Array(int)" value="{0}" />
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
+          <Parameter name="verbosity level" type="string" value="high" />
         </ParameterList>
       </ParameterList>
       <ParameterList name="preconditioner" type="ParameterList">
@@ -387,7 +412,7 @@
         <ParameterList name="boomer amg parameters" type="ParameterList">
           <Parameter name="cycle applications" type="int" value="1" />
           <Parameter name="smoother sweeps" type="int" value="1" />
-          <Parameter name="strong threshold" type="double" value="0.85" />
+          <Parameter name="strong threshold" type="double" value="0.25" />
           <Parameter name="tolerance" type="double" value="0.0" />
           <Parameter name="number of functions" type="int" value="2" />
           <Parameter name="verbosity" type="int" value="0" />
@@ -401,11 +426,11 @@
           <Parameter name="convergence criteria" type="Array(string)" value="{relative residual, make one iteration}" />
           <Parameter name="maximum number of iterations" type="int" value="80" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="none" />
+            <Parameter name="verbosity level" type="string" value="high" />
           </ParameterList>
         </ParameterList>
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
+          <Parameter name="verbosity level" type="string" value="high" />
         </ParameterList>
       </ParameterList>
     </ParameterList>
@@ -421,7 +446,7 @@
       <ParameterList name="initial condition" type="ParameterList"/>
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
     </ParameterList>
 
@@ -437,7 +462,7 @@
       <ParameterList name="initial condition" type="ParameterList"/>
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
     </ParameterList>
       
@@ -454,10 +479,12 @@
       <Parameter name="max valid change in saturation in a time step [-]" type="double" value="0.1" />
       <Parameter name="max valid change in ice saturation in a time step [-]" type="double" value="0.1" />
       <Parameter name="clobber surface rel perm" type="bool" value="true" />
+
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
+
       <ParameterList name="diffusion" type="ParameterList">
         <Parameter name="discretization primary" type="string" value="mfd: two-point flux approximation" />
       </ParameterList>
@@ -469,7 +496,7 @@
       <ParameterList name="initial condition" type="ParameterList">
         <Parameter name="initialize faces from cells" type="bool" value="true" />
         <ParameterList name="initialize from 1D column" type="ParameterList">
-          <Parameter name="file" type="string" value="../spinup/Spinup_40_R11/column_data.h5" />
+          <Parameter name="file" type="string" value="../../watershed468/spinup/column_data.h5" />
           <Parameter name="z header" type="string" value="/z" />
           <Parameter name="f header" type="string" value="/pressure" />
           <Parameter name="coordinate orientation" type="string" value="depth" />
@@ -483,8 +510,10 @@
           <ParameterList name="moss" type="ParameterList">
             <Parameter name="region" type="string" value="computational domain moss" />
             <Parameter name="WRM Type" type="string" value="van Genuchten" />
-            <Parameter name="van Genuchten alpha" type="double" value="0.0023" />
-            <Parameter name="van Genuchten m" type="double" value="0.2754" />
+            <Parameter name="van Genuchten alpha" type="double" value="0.00051" />
+            <Parameter name="van Genuchten m" type="double" value="0.19" />
+<!--            <Parameter name="van Genuchten alpha" type="double" value="0.0023" />
+            <Parameter name="van Genuchten m" type="double" value="0.2754" />-->
             <Parameter name="residual saturation" type="double" value="0.0" />
 	    <Parameter name="smoothing interval width [saturation]" type="double" value="0.1" />
           </ParameterList>
@@ -509,9 +538,6 @@
           <Parameter name="permafrost WRM type" type="string" value="fpd permafrost model" />
           <Parameter name="minimum dsi_dpressure magnitude" type="double" value="1e-12" />
         </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
-        </ParameterList>
       </ParameterList>
     </ParameterList>
 
@@ -525,7 +551,7 @@
       <Parameter name="supress advective terms in preconditioner" type="bool" value="false" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
       <ParameterList name="diffusion" type="ParameterList">
         <Parameter name="discretization primary" type="string" value="mfd: two-point flux approximation" />
@@ -545,7 +571,7 @@
       <ParameterList name="initial condition" type="ParameterList">
         <Parameter name="initialize faces from cells" type="bool" value="true" />
         <ParameterList name="initialize from 1D column" type="ParameterList">
-          <Parameter name="file" type="string" value="../spinup/Spinup_40_R11/column_data.h5" />
+          <Parameter name="file" type="string" value="../../watershed468/spinup/column_data.h5" />
           <Parameter name="z header" type="string" value="/z" />
           <Parameter name="f header" type="string" value="/temperature" />
           <Parameter name="coordinate orientation" type="string" value="depth" />
@@ -559,7 +585,8 @@
             <Parameter name="thermal conductivity type" type="string" value="three-phase wet/dry" />
             <Parameter name="thermal conductivity, saturated (unfrozen) [W/(m-K)]" type="double" value="0.6" />
             <Parameter name="thermal conductivity, dry [W/(m-K)]" type="double" value="0.1" />
-	    <Parameter name="saturated beta frozen [-]" type="double" value="0.56" />
+<!--	    <Parameter name="saturated beta frozen [-]" type="double" value="0.56" />-->
+	    <Parameter name="saturated beta frozen [-]" type="double" value="0.6" />
             <Parameter name="unsaturated alpha frozen [-]" type="double" value="1.0" />
             <Parameter name="unsaturated alpha unfrozen [-]" type="double" value="0.5" />
           </ParameterList>
@@ -591,7 +618,6 @@
     <ParameterList name="surface star system" type="ParameterList">
       <Parameter name="PK type" type="string" value="strong MPC" />
       <Parameter name="PKs order" type="Array(string)" value="{surface star flow, surface star energy}" />
-
       <ParameterList name="time integrator" type="ParameterList">
         <Parameter name="extrapolate initial guess" type="bool" value="false" />
         <Parameter name="solver type" type="string" value="nka_bt_ats" />
@@ -606,7 +632,7 @@
           <Parameter name="diverged tolerance" type="double" value="1000000.0" />
           <Parameter name="limit iterations" type="int" value="21" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="medium" />
+            <Parameter name="verbosity level" type="string" value="high" />
           </ParameterList>
         </ParameterList>
         <ParameterList name="timestep controller smarter parameters" type="ParameterList">
@@ -619,11 +645,7 @@
           <Parameter name="growth wait after fail" type="int" value="2" />
           <Parameter name="count before increasing increase factor" type="int" value="2" />
         </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="medium" />
-        </ParameterList>
       </ParameterList>
-
       <ParameterList name="verbose object" type="ParameterList">
         <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
@@ -636,9 +658,9 @@
       <Parameter name="source term" type="bool" value="false" />
       <Parameter name="allow no negative ponded depths" type="bool" value="true" />
       <Parameter name="initial time step" type="double" value="86400.0" />
-      <Parameter name="debug cells" type="Array(int)" value="{0}" />
+      <Parameter name="debug cells" type="Array(int)" value="{3}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
       <ParameterList name="diffusion" type="ParameterList">
         <Parameter name="discretization primary" type="string" value="fv: default" />
@@ -668,11 +690,11 @@
           <Parameter name="convergence criteria" type="Array(string)" value="{relative residual, make one iteration}" />
           <Parameter name="maximum number of iterations" type="int" value="80" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="none" />
+            <Parameter name="verbosity level" type="string" value="high" />
           </ParameterList>
         </ParameterList>
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
+          <Parameter name="verbosity level" type="string" value="high" />
         </ParameterList>
       </ParameterList>
 
@@ -708,9 +730,9 @@
       <Parameter name="supress advective terms in preconditioner" type="bool" value="false" />
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="upwind conductivity method" type="string" value="arithmetic mean" />
-      <Parameter name="debug cells" type="Array(int)" value="{0}" />
+      <Parameter name="debug cells" type="Array(int)" value="{0,1,2,3}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="none" />
+        <Parameter name="verbosity level" type="string" value="high" />
       </ParameterList>
       <ParameterList name="diffusion" type="ParameterList">
         <Parameter name="discretization primary" type="string" value="fv: default" />
@@ -739,11 +761,11 @@
           <Parameter name="convergence criteria" type="Array(string)" value="{relative residual, make one iteration}" />
           <Parameter name="maximum number of iterations" type="int" value="80" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="none" />
+            <Parameter name="verbosity level" type="string" value="high" />
           </ParameterList>
         </ParameterList>
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
+          <Parameter name="verbosity level" type="string" value="high" />
         </ParameterList>
       </ParameterList>
       <ParameterList name="preconditioner" type="ParameterList">
@@ -807,25 +829,14 @@
       </ParameterList>
 
       <!-- sources and sinks -->
-      <ParameterList name="surface_column_*-mass_source_sink" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="additive evaluator" />
-        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{mass_source_mols,mass_lateral_flow_source}" />
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
-        </ParameterList>
-      </ParameterList>
-
       <ParameterList name="surface_column_*-energy_source_sink" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="additive evaluator" />
-        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{total_energy_source,energy_lateral_flow_source,surface_subsurface_advected_energy_flux}" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{total_energy_source,surface_subsurface_advected_energy_flux}" />
       </ParameterList>
       
-      <ParameterList name="surface_column_*-mass_source_mols" type="ParameterList">
+      <ParameterList name="surface_column_*-mass_source_sink" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
         <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{molar_density_liquid, mass_source}" />
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
-        </ParameterList>
       </ParameterList>
       
       <ParameterList name="surface_column_*-source_molar_density" type="ParameterList">
@@ -885,6 +896,7 @@
       
       <ParameterList name="surface_star-unfrozen_effective_depth" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="unfrozen effective depth" />
+        <Parameter name="ice retardation exponent [-]" type="double" value="2" />
       </ParameterList>
 
       <ParameterList name="column_*-molar_density_liquid" type="ParameterList">
@@ -976,11 +988,6 @@
         </ParameterList>
       </ParameterList>
 
-      <ParameterList name="column_*-internal_energy_gas" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="iem water vapor" />
-        <Parameter name="internal energy key" type="string" value="internal_energy_gas" />
-      </ParameterList>
-
       <ParameterList name="column_*-internal_energy_ice" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="iem" />
         <ParameterList name="IEM parameters" type="ParameterList">
@@ -1034,9 +1041,6 @@
       <ParameterList name="surface_star-elevation" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="column elevation" />
 	<Parameter name="includes non-rank-local dependencies" type="bool" value="true"/>
-	<ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
-	</ParameterList>
       </ParameterList>
 
       <ParameterList name="surface_star-pres_elev" type="ParameterList">
@@ -1070,7 +1074,8 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="0.9" />
+                <Parameter name="value" type="double" value="0.87" />
+<!--                <Parameter name="value" type="double" value="0.9" />-->
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -1083,9 +1088,6 @@
               </ParameterList>
             </ParameterList>
           </ParameterList>
-        </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
       </ParameterList>
 
@@ -1124,7 +1126,8 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="1.75e-11" />
+                <Parameter name="value" type="double" value="9.38e-12" />
+<!--                <Parameter name="value" type="double" value="1.75e-11" />-->
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -1171,9 +1174,6 @@
             </ParameterList>
           </ParameterList>
         </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
-        </ParameterList>
       </ParameterList>
 
       <ParameterList name="surface_column_*-incoming_shortwave_radiation" type="ParameterList">
@@ -1190,9 +1190,6 @@
               </ParameterList>
             </ParameterList>
           </ParameterList>
-        </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="low" />
         </ParameterList>
       </ParameterList>
 
@@ -1216,9 +1213,6 @@
             </ParameterList>
           </ParameterList>
         </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
-        </ParameterList>
       </ParameterList>
 
       <ParameterList name="surface_column_*-relative_humidity" type="ParameterList">
@@ -1235,9 +1229,6 @@
               </ParameterList>
             </ParameterList>
           </ParameterList>
-        </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
       </ParameterList>
 
@@ -1256,9 +1247,6 @@
             </ParameterList>
           </ParameterList>
         </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
-        </ParameterList>
       </ParameterList>
 
       <ParameterList name="surface_column_*-precipitation_rain" type="ParameterList">
@@ -1275,9 +1263,6 @@
               </ParameterList>
             </ParameterList>
           </ParameterList>
-        </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
       </ParameterList>
 
@@ -1296,9 +1281,6 @@
             </ParameterList>
           </ParameterList>
         </ParameterList>
-        <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
-        </ParameterList>
       </ParameterList>
 
       <ParameterList name="surface_column_*-fractional_areas" type="ParameterList">
@@ -1315,9 +1297,9 @@
         <Parameter name="field evaluator type" type="string" value="surface balance" />
         <Parameter name="save diagnostic data" type="bool" value="true" />
 	<Parameter name="dessicated zone thickness [m]" type="double" value="0.05" />
-        <Parameter name="debug cells" type="Array(int)" value="{0}" />
+        <Parameter name="debug cells" type="Array(int)" value="{0,1,2,3}" />
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="none" />
+          <Parameter name="verbosity level" type="string" value="high" />
         </ParameterList>
       </ParameterList>
 
@@ -1342,25 +1324,25 @@
   <ParameterList name="visualization" type="ParameterList">
     <ParameterList name="surface_star" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface_star" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
+      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,864000.0,-1.0}" />
       <Parameter name="visualize on 3D mesh" type="bool" value="true" />
     </ParameterList>
-    <!--
+    
     <ParameterList name="column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
+      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,864000.0,-1.0}" />
       <Parameter name="file format" type="string" value="silo" /> 
     </ParameterList>
-    
+
     <ParameterList name="surface_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
+      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,864000.0,-1.0}" />
     </ParameterList>
     
     <ParameterList name="snow_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_snow" />
-      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
+      <Parameter name="times start period stop" type="Array(double)" value="{43200.0,864000.0,-1.0}" />
     </ParameterList>
-    -->
+
   </ParameterList>
 </ParameterList>
