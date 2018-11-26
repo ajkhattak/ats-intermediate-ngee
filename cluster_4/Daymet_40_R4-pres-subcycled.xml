@@ -687,11 +687,11 @@
       <ParameterList name="diffusion" type="ParameterList">
         <Parameter name="discretization primary" type="string" value="fv: default" />
       </ParameterList>
-<!--
+
       <ParameterList name="diffusion preconditioner" type="ParameterList">
         <Parameter name="Newton correction" type="string" value="true Jacobian" />
       </ParameterList>
--->
+
       <ParameterList name="boundary conditions" type="ParameterList">
 	<ParameterList name="head" type="ParameterList">
           <ParameterList name="surface boundary" type="ParameterList">
@@ -738,7 +738,7 @@
       <ParameterList name="overland conductivity evaluator" type="ParameterList">
         <Parameter name="overland conductivity key" type="string" value="surface_star-overland_conductivity" />
         <Parameter name="depth key" type="string" value="surface_star-unfrozen_effective_depth" />
-	<Parameter name="subgrid model" type="bool" value="true" />
+        <Parameter name="coefficient key" type="string" value="surface_star-effective_manning_coefficient" />
         <ParameterList name="overland conductivity model" type="ParameterList">
           <Parameter name="Manning exponent" type="double" value="0.6666666667" />
           <Parameter name="slope regularization epsilon" type="double" value="0.01" />
@@ -949,6 +949,10 @@
 	<Parameter name="field evaluator type" type="string" value="fractional conductance" />
       </ParameterList>
 
+      <ParameterList name="surface_star-effective_manning_coefficient" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="subgrid manning coefficient" />
+      </ParameterList>
+      
       <!-- sources and sinks -->
       <ParameterList name="surface_column_*-energy_source_sink" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="additive evaluator" />
@@ -1016,8 +1020,8 @@
       </ParameterList>
       
       <ParameterList name="surface_star-unfrozen_effective_depth" type="ParameterList">
-        <Parameter name="field evaluator type" type="string" value="unfrozen effective depth" />
-        <Parameter name="ice retardation exponent [-]" type="double" value="2" />
+        <Parameter name="field evaluator type" type="string" value="multiplicative evaluator" />
+        <Parameter name="evaluator dependency suffixes" type="Array(string)" value="{unfrozen_fraction, ponded_depth_minus_depression_depth}" />
       </ParameterList>
 
       <ParameterList name="column_*-molar_density_liquid" type="ParameterList">
