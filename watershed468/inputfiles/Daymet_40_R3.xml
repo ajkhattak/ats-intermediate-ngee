@@ -854,30 +854,36 @@
 
       <!-- subgrid model parameters -->
       <ParameterList name="surface_star-microtopographic_relief" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value="secondary variable from function"/>
-	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth}"/>
+        <Parameter name="field evaluator type" type="string" value="independent variable"/>
 	<ParameterList name="function" type="ParameterList">
-          <ParameterList name="function-tabular">
-	    <Parameter name="x values" type="Array(double)" value="{0.0,0.4, 0.5443, 0.6886, 0.8329, 0.9772, 1.1214, 1.2657, 1.410, 1.5543}"/>
-	    <Parameter name="y values" type="Array(double)" value="{0.361,0.361,0.376,0.428,0.499,0.58,0.666,0.753,0.846,0.938}"/>
-	    <Parameter name="forms" type="Array(string)" value="{linear,linear,linear,linear,linear,linear,linear,linear, linear}"/>
+          <ParameterList name="domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <ParameterList name="function-constant" type="ParameterList">
+                <Parameter name="value" type="double" value="0.361" />
+              </ParameterList>
+            </ParameterList>
           </ParameterList>
         </ParameterList>
       </ParameterList>
-      
+
       <ParameterList name="surface_column_*-microtopographic_relief" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="subgrid disaggregate evaluator"/>
         <Parameter name="source domain name" type="string" value="surface_star"/>
       </ParameterList>
       
       <ParameterList name="surface_star-excluded_volume" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value="secondary variable from function"/>
-	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth}"/>
+	<Parameter name="field evaluator type" type="string" value="independent variable"/>
 	<ParameterList name="function" type="ParameterList">
-          <ParameterList name="function-tabular">
-	    <Parameter name="x values" type="Array(double)" value="{0.0,0.4,0.5443,0.6886,0.8329,0.9772,1.1214,1.2657,1.41,1.5543,1.6986,1.8429}"/>
-	    <Parameter name="y values" type="Array(double)" value="{0.185,0.185,0.196,0.234,0.284,0.338,0.395,0.454,0.516,0.576,0.625,0.675}"/>
-	    <Parameter name="forms" type="Array(string)" value="{linear,linear,linear,linear,linear,linear,linear,linear, linear, linear,linear}"/>
+          <ParameterList name="domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <ParameterList name="function-constant" type="ParameterList">
+                <Parameter name="value" type="double" value="0.185" />
+              </ParameterList>
+            </ParameterList>
           </ParameterList>
         </ParameterList>
       </ParameterList>
@@ -888,25 +894,31 @@
       </ParameterList>
       
       <ParameterList name="surface_star-depression_depth" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value="secondary variable from function"/>
-	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth}"/>
+	<Parameter name="field evaluator type" type="string" value="independent variable"/>
 	<ParameterList name="function" type="ParameterList">
-          <ParameterList name="function-tabular">
-	    <Parameter name="x values" type="Array(double)" value="{0.0,0.4, 0.5443, 0.6886, 0.8329, 0.9772, 1.1214, 1.2657, 1.410, 1.5543}"/>
-	    <Parameter name="y values" type="Array(double)" value="{0.18,0.18,0.176,0.174,0.143,0.148,0.165,0.178,0.198,0.213}"/>
-	    <Parameter name="forms" type="Array(string)" value="{linear,linear,linear,linear,linear,linear,linear,linear,linear}"/>
+          <ParameterList name="domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <ParameterList name="function-constant" type="ParameterList">
+                <Parameter name="value" type="double" value="0.18" />
+              </ParameterList>
+            </ParameterList>
           </ParameterList>
         </ParameterList>
       </ParameterList>
-      
+
       <ParameterList name="surface_star-drag_exponent" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value="secondary variable from function"/>
-	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth}"/>
+	<Parameter name="field evaluator type" type="string" value="independent variable"/>
 	<ParameterList name="function" type="ParameterList">
-          <ParameterList name="function-tabular">
-	    <Parameter name="x values" type="Array(double)" value="{0.0,0.4, 0.5443, 0.6886, 0.8329, 0.9772, 1.1214, 1.2657, 1.410, 1.5543}"/>
-	    <Parameter name="y values" type="Array(double)" value="{7.,7.,6.9,4.55,3.55,2.65,2.6,2.7,2.6,2.58}"/>
-	    <Parameter name="forms" type="Array(string)" value="{linear,linear,linear,linear,linear,linear,linear,linear,linear}"/>
+          <ParameterList name="domain" type="ParameterList">
+            <Parameter name="region" type="string" value="surface domain" />
+            <Parameter name="component" type="string" value="cell" />
+            <ParameterList name="function" type="ParameterList">
+              <ParameterList name="function-constant" type="ParameterList">
+                <Parameter name="value" type="double" value="7.0" />
+              </ParameterList>
+            </ParameterList>
           </ParameterList>
         </ParameterList>
       </ParameterList>
