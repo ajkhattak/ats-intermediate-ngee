@@ -1122,9 +1122,9 @@
         </ParameterList>
       </ParameterList>
       
-            <ParameterList name="surface_star-manning_coefficient" type="ParameterList">
+      <ParameterList name="surface_star-manning_coefficient" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="secondary variable from function" />
-	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth,surface_star-moisture_content,surface_star-water_table}"/>
+	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth,surface_star-moisture_content,surface_star-water_table,surface_star-volumetric_wc,surface_star-gas_content,surface_star-thaw_depth,surface_star-evaporative_flux}"/>
         <ParameterList name="function" type="ParameterList">
           <ParameterList name="function-constant" type="ParameterList">
             <Parameter name="value" type="double" value="1.0" />
@@ -1132,20 +1132,66 @@
         </ParameterList>
       </ParameterList>
       
-      <ParameterList name="surface_star-moisture_content" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value ="moisture content"/>
-      </ParameterList>
-      <ParameterList name="surface_star-water_table" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value ="water table"/>
-      </ParameterList>
-      
       <ParameterList name="surface_star-maximum_thaw_depth" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value="maximum thaw depth" />
+	<Parameter name="field evaluator type" type="string" value="subgrid aggregate evaluator"/>
+	<Parameter name="source domain name" type="string" value="surface_column_*"/>
 	<Parameter name="checkpoint" type="bool" value="true" />
       </ParameterList>
        
+      <ParameterList name="surface_column_*-maximum_thaw_depth" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="maximum thaw depth"/>
+      </ParameterList>
+
       <ParameterList name="surface_star-thaw_depth" type="ParameterList">
-	<Parameter name="field evaluator type" type="string" value ="thaw depth"/>
+	<Parameter name="field evaluator type" type="string" value="subgrid aggregate evaluator"/>
+	<Parameter name="source domain name" type="string" value="surface_column_*"/>
+	<Parameter name="checkpoint" type="bool" value="true" />
+      </ParameterList>
+
+      <ParameterList name="surface_column_*-thaw_depth" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="thaw depth"/>
+      </ParameterList>
+
+      <ParameterList name="surface_star-evaporative_flux" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="subgrid aggregate evaluator"/>
+	<Parameter name="source domain name" type="string" value="surface_column_*"/>
+      </ParameterList>
+      
+      <ParameterList name="surface_star-moisture_content" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="subgrid aggregate evaluator"/>
+	<Parameter name="source domain name" type="string" value="surface_column_*"/>
+      </ParameterList>
+       
+      <ParameterList name="surface_column_*-moisture_content" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="moisture content"/>
+      </ParameterList>
+
+      <ParameterList name="surface_star-volumetric_wc" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="subgrid aggregate evaluator"/>
+	<Parameter name="source domain name" type="string" value="surface_column_*"/>
+      </ParameterList>
+       
+      <ParameterList name="surface_column_*-volumetric_wc" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="moisture content"/>
+	<Parameter name="volumetric water content" type="bool" value="true"/>
+      </ParameterList>
+
+      <ParameterList name="surface_star-water_table" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="subgrid aggregate evaluator"/>
+	<Parameter name="source domain name" type="string" value="surface_column_*"/>
+      </ParameterList>
+       
+      <ParameterList name="surface_column_*-water_table" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="water table"/>
+      </ParameterList>
+
+      <ParameterList name="surface_star-gas_content" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="subgrid aggregate evaluator"/>
+	<Parameter name="source domain name" type="string" value="surface_column_*"/>
+      </ParameterList>
+       
+      <ParameterList name="surface_column_*-gas_content" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="gas content"/>
       </ParameterList>
 
       <ParameterList name="surface_star-elevation" type="ParameterList">
