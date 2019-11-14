@@ -2,7 +2,7 @@
 Intermediate Scale Runs
 ========================
 
-ISM = Intermeidate Scale Model
+ISM = Intermediate Scale Model
 
 R1: ISM + No Subgrid Flow + SEB (2-component: bare-ground, snow-covered) + No Deformation
 
@@ -18,7 +18,7 @@ R6: ISM + Dynamic Subgrid Flow + SEB (3-component : bare-ground, snow-covered, f
 
 
 Note:
-Subgrid flow model will alwats use 3-component seb
+Subgrid flow model will alwats use 3-component SEB
 
 Notation:
 _A : Manning's coefficient = 100

@@ -6,17 +6,14 @@ X: forcing data.  Either: Spinup (cycled 1985 daymet), Daymet, or Snap
 Y: initial ice rich zone depth.  Either: 40 or 50 cm
 Z: Scenario number.  Either: R1-6
 
-R1 : base run
 
-R2 : base + subgrid flow (all low-centered polygons)  (DEAD)
-
-R3 : base + subgrid flow (all high-centered polygons)  (DEAD)
-
-R4 : base + subgrid flow + subgrid seb (all low-centered polygons)
-
-R5 : base + subgrid flow + subgrid seb (all high-centered polygons)
-
-R6 : dynamic surface subgrid (all low-centered polygons)
+Dynamics Subgrid model
+Daymet_40_R1_A: changed energy supress term FALSE, diagonal shift = 1.e-4, no subcycling
+Daymet_40_R1_B: changed energy supress term TRUE, diagonal shift = 1.e-4, subcycling
+Daymet_40_R1_C: changed energy supress term FALSE, diagonal shift = 1.e-4, subcycling
 
 
+Daymet_40_R6: changed energy supress term, subcycling 
+Daymet_40_R6_A: changed energy supress term, no subcycling
 
+Daymet_40_R6_B: changed energy supress term and max saturation change

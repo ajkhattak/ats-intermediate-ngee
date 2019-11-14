@@ -1030,7 +1030,7 @@
       
       <ParameterList name="surface_star-manning_coefficient" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="secondary variable from function" />
-	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth,surface_star-moisture_content,surface_star-water_table,surface_star-volumetric_wc,surface_star-gas_content,surface_star-thaw_depth,surface_star-evaporative_flux}"/>
+	<Parameter name="evaluator dependencies" type="Array(string)" value="{surface_star-maximum_thaw_depth,surface_star-moisture_content,surface_star-water_table,surface_star-volumetric_wc,surface_star-gas_content,surface_star-thaw_depth,surface_star-evaporative_flux,surface_star-column_avg_temp}"/>
         <ParameterList name="function" type="ParameterList">
           <ParameterList name="function-constant" type="ParameterList">
             <Parameter name="value" type="double" value="1.0" />
@@ -1098,6 +1098,16 @@
        
       <ParameterList name="surface_column_*-gas_content" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="gas content"/>
+      </ParameterList>
+
+      <ParameterList name="surface_star-column_avg_temp" type="ParameterList">
+	<Parameter name="field evaluator type" type="string" value="subgrid aggregate evaluator"/>
+	<Parameter name="source domain name" type="string" value="surface_column_*"/>
+      </ParameterList>
+       
+      <ParameterList name="surface_column_*-column_avg_temp" type="ParameterList">
+        <Parameter name="field evaluator type" type="string" value="column average temperature"/>
+	<Parameter name="depth from surface [m]" type="double" value="1.0"/>
       </ParameterList>
 
       <ParameterList name="surface_star-elevation" type="ParameterList">
