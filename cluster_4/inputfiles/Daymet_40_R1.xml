@@ -5,7 +5,7 @@
       <Parameter name="mesh type" type="string" value="read mesh file" />
       <Parameter name="build columns from set" type="string" value="surface" />
       <ParameterList name="read mesh file parameters" type="ParameterList">
-        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
       </ParameterList>
     </ParameterList>
@@ -25,13 +25,14 @@
     </ParameterList>
 
     <ParameterList name="column" type="ParameterList">
-      <Parameter name="mesh type" type="string" value="subgrid" />
-      <ParameterList name="subgrid parameters" type="ParameterList">
+      <Parameter name="mesh type" type="string" value="domain set" />
+      <ParameterList name="domain set parameters" type="ParameterList">
         <Parameter name="entity kind" type="string" value="cell" />
-        <Parameter name="subgrid region name" type="string" value="surface domain" />
+        <Parameter name="entity set names" type="Array(string)" value="{surface domain}" />
         <Parameter name="parent domain" type="string" value="surface" />
         <ParameterList name="column_*" type="ParameterList">
           <Parameter name="mesh type" type="string" value="column" />
+	  <Parameter name="deformable mesh" type="bool" value="false" />
           <ParameterList name="column parameters" type="ParameterList">
             <Parameter name="parent domain" type="string" value="domain" />
           </ParameterList>
@@ -40,10 +41,10 @@
     </ParameterList>
     
     <ParameterList name="surface_column" type="ParameterList">
-      <Parameter name="mesh type" type="string" value="subgrid" />
-      <ParameterList name="subgrid parameters" type="ParameterList">
+      <Parameter name="mesh type" type="string" value="domain set" />
+      <ParameterList name="domain set parameters" type="ParameterList">
         <Parameter name="entity kind" type="string" value="cell" />
-        <Parameter name="subgrid region name" type="string" value="surface domain" />
+        <Parameter name="entity set names" type="Array(string)" value="{surface domain}" />
         <Parameter name="parent domain" type="string" value="surface" />
         <ParameterList name="surface_column_*" type="ParameterList">
           <Parameter name="mesh type" type="string" value="column surface" />
@@ -56,10 +57,10 @@
     </ParameterList>
     
     <ParameterList name="snow_column" type="ParameterList">
-      <Parameter name="mesh type" type="string" value="subgrid" />
-      <ParameterList name="subgrid parameters" type="ParameterList">
+      <Parameter name="mesh type" type="string" value="domain set" />
+      <ParameterList name="domain set parameters" type="ParameterList">
         <Parameter name="entity kind" type="string" value="cell" />
-        <Parameter name="subgrid region name" type="string" value="surface domain" />
+        <Parameter name="entity set names" type="Array(string)" value="{surface domain}" />
         <Parameter name="parent domain" type="string" value="surface" />
         <ParameterList name="snow_column_*" type="ParameterList">
           <Parameter name="mesh type" type="string" value="column surface" />
@@ -90,7 +91,7 @@
     <ParameterList name="computational domain moss" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1001" />
-	<Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
+	<Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -98,7 +99,7 @@
     <ParameterList name="computational domain peat" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1002" />
-        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -106,7 +107,7 @@
     <ParameterList name="computational domain upper mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1003" />
-        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -114,7 +115,7 @@
     <ParameterList name="computational domain ice rich" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1004" />
-        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -122,7 +123,7 @@
     <ParameterList name="computational domain lower mineral" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1005" />
-        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Cell" />
       </ParameterList>
@@ -138,7 +139,7 @@
     <ParameterList name="surface" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="2" />
-        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -165,7 +166,7 @@
     <ParameterList name="bottom face" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1" />
-        <Parameter name="file" type="string" value="../mesh/four-polygons-5layers-om10cm-icerich40cm.exo" />
+        <Parameter name="file" type="string" value="../mesh/IR40/four-polygons-5layers-om10cm-icerich40cm.par" />
         <Parameter name="format" type="string" value="Exodus II" />
         <Parameter name="entity" type="string" value="Face" />
       </ParameterList>
@@ -176,7 +177,7 @@
     <Parameter name="start time" type="double" value="0.0" />
     <Parameter name="start time units" type="string" value="s" />
 <!--    <Parameter name="end time" type="double" value="11314.5" />-->
-    <Parameter name="end time" type="double" value="365." />
+    <Parameter name="end time" type="double" value="200." />
     <Parameter name="end time units" type="string" value="d" />
 
     <ParameterList name="required times" type="ParameterList">
@@ -256,20 +257,21 @@
       <Parameter name="times start period stop" type="Array(double)" value="{0.0,86400.0,-1.0}" />
       <Parameter name="visualize on 3D mesh" type="bool" value="true" />
     </ParameterList>
-    <ParameterList name="surface_column_*" type="ParameterList">
+    <ParameterList name="Ssurface_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_surface" />
       <Parameter name="times start period stop" type="Array(double)" value="{0.0,8640000.0,-1.0}" />
       <Parameter name="visualize on 3D mesh" type="bool" value="true" />
     </ParameterList>
-    <ParameterList name="snow_column_*" type="ParameterList">
+    <ParameterList name="Ssnow_column_*" type="ParameterList">
       <Parameter name="file name base" type="string" value="visdump_snow" />
       <Parameter name="times start period stop" type="Array(double)" value="{0.0,8640000.0,-1.0}" />
       <Parameter name="visualize on 3D mesh" type="bool" value="true" />
     </ParameterList>
   </ParameterList>
 
-  <ParameterList name="checkpoints" type="ParameterList">
-    <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000.0,-1}" />
+  <ParameterList name="checkpoint" type="ParameterList">
+    <Parameter name="file name base" type="string" value="checkpoint_*" />
+    <Parameter name="times start period stop" type="Array(double)" value="{43200.0,31536000,-1}" />
   </ParameterList>
 
   <ParameterList name="PKs" type="ParameterList">
@@ -488,7 +490,7 @@
       <ParameterList name="initial condition" type="ParameterList">
         <Parameter name="initialize faces from cells" type="bool" value="true" />
         <ParameterList name="initialize from 1D column" type="ParameterList">
-	  <Parameter name="file" type="string" value="../../../../PreSpinupHistorical/SprunB7/column_data.h5" />
+	  <Parameter name="file" type="string" value="../restart/column_data.h5" /><!-- taken from pre_simulations/PreSpinup/SprunB8_HCP-->
           <Parameter name="z header" type="string" value="/z" />
           <Parameter name="f header" type="string" value="/pressure" />
           <Parameter name="coordinate orientation" type="string" value="depth" />
@@ -503,25 +505,25 @@
           <ParameterList name="moss" type="ParameterList">
             <Parameter name="region" type="string" value="computational domain moss" />
             <Parameter name="WRM Type" type="string" value="van Genuchten" />
-	    <Parameter name="van Genuchten alpha" type="double" value="0.0023" />
-            <Parameter name="van Genuchten m" type="double" value="0.2754" />
-            <Parameter name="residual saturation" type="double" value="0.0" />
+	    <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.0023" />
+            <Parameter name="van Genuchten m [-]" type="double" value="0.2754" />
+            <Parameter name="residual saturation [-]" type="double" value="0.0" />
             <Parameter name="smoothing interval width [saturation]" type="double" value="0.1" />
           </ParameterList>
 	  <ParameterList name="peat" type="ParameterList"><!-- David Graham-->
             <Parameter name="region" type="string" value="computational domain peat" />
             <Parameter name="WRM Type" type="string" value="van Genuchten" />
-            <Parameter name="van Genuchten alpha" type="double" value="0.00051" />
-            <Parameter name="van Genuchten m" type="double" value="0.19" />
-            <Parameter name="residual saturation" type="double" value="0.0" />
+            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.00051" />
+            <Parameter name="van Genuchten m [-]" type="double" value="0.19" />
+            <Parameter name="residual saturation [-]" type="double" value="0.0" />
             <Parameter name="smoothing interval width [saturation]" type="double" value="0.1" />
           </ParameterList>
           <ParameterList name="upper mineral" type="ParameterList">
             <Parameter name="region" type="string" value="computational domain mineral" />
             <Parameter name="WRM Type" type="string" value="van Genuchten" />
-            <Parameter name="van Genuchten alpha" type="double" value="0.00033" />
-            <Parameter name="van Genuchten m" type="double" value="0.2481" />
-            <Parameter name="residual saturation" type="double" value="0.2" />
+            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.00033" />
+            <Parameter name="van Genuchten m [-]" type="double" value="0.2481" />
+            <Parameter name="residual saturation [-]" type="double" value="0.2" />
 	    <Parameter name="smoothing interval width [saturation]" type="double" value="0.1" />
           </ParameterList>
         </ParameterList>
@@ -566,7 +568,7 @@
       <ParameterList name="initial condition" type="ParameterList">
         <Parameter name="initialize faces from cells" type="bool" value="true" />
         <ParameterList name="initialize from 1D column" type="ParameterList">
-	  <Parameter name="file" type="string" value="../../../../PreSpinupHistorical/SprunB7/column_data.h5" />
+	  <Parameter name="file" type="string" value="../restart/column_data.h5" /><!-- taken from pre_simulations/PreSpinup/SprunB8_HCP-->
           <Parameter name="z header" type="string" value="/z" />
           <Parameter name="f header" type="string" value="/temperature" />
           <Parameter name="coordinate orientation" type="string" value="depth" />
