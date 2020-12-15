@@ -96,7 +96,7 @@
   <ParameterList name="cycle driver" type="ParameterList">
     <Parameter name="start time" type="double" value="0.0" />
     <Parameter name="start time units" type="string" value="s" />
-    <Parameter name="end time" type="double" value="200.5" />
+    <Parameter name="end time" type="double" value="365.5" />
     <Parameter name="end time units" type="string" value="d" />
     <ParameterList name="required times" type="ParameterList">
       <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
@@ -155,7 +155,7 @@
       <Parameter name="PK type" type="string" value="strong MPC" />
       <Parameter name="PKs order" type="Array(string)" value="{SEB,permafrost surface and subsurface}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="high" />
+        <Parameter name="verbosity level" type="string" value="none" />
       </ParameterList>
 
       <ParameterList name="time integrator" type="ParameterList">
@@ -170,11 +170,11 @@
           <Parameter name="diverged tolerance" type="double" value="10000000000.0" />
           <Parameter name="limit iterations" type="int" value="21" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="high" />
+            <Parameter name="verbosity level" type="string" value="none" />
           </ParameterList>
         </ParameterList>
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="high" />
+          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
         <ParameterList name="timestep controller smarter parameters" type="ParameterList">
           <Parameter name="max iterations" type="int" value="18" />
@@ -200,14 +200,14 @@
       <Parameter name="supress Jacobian terms: d div surface q / dT" type="bool" value="true" />
       <Parameter name="dump preconditioner" type="bool" value="false" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="high" />
+        <Parameter name="verbosity level" type="string" value="none" />
       </ParameterList>
 
       <ParameterList name="ewc delegate" type="ParameterList">
         <Parameter name="predictor type" type="string" value="smart ewc" />
         <Parameter name="debug cells" type="Array(int)" value="{0}" />
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="high" />
+          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
       </ParameterList>
 
@@ -215,7 +215,7 @@
         <Parameter name="predictor type" type="string" value="none" />
         <Parameter name="debug cells" type="Array(int)" value="{0}" />
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="high" />
+          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
       </ParameterList>
 
@@ -225,7 +225,7 @@
         <Parameter name="cap over atmospheric" type="double" value="0.1" />
         <Parameter name="debug cells" type="Array(int)" value="{1}" />
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="high" />
+          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
       </ParameterList>
 
@@ -240,7 +240,7 @@
           <Parameter name="number of functions" type="int" value="2" />
         </ParameterList>
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="medium" />
+          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
         <ParameterList name="gmres parameters" type="ParameterList">
           <Parameter name="preconditioning strategy" type="string" value="left" />
@@ -248,7 +248,7 @@
           <Parameter name="convergence criteria" type="Array(string)" value="{relative residual,make one iteration}" />
           <Parameter name="maximum number of iteration" type="int" value="10" />
           <ParameterList name="verbose object" type="ParameterList">
-            <Parameter name="verbosity level" type="string" value="medium" />
+            <Parameter name="verbosity level" type="string" value="none" />
           </ParameterList>
         </ParameterList>
       </ParameterList>
@@ -269,7 +269,7 @@
       <Parameter name="max valid change in ice saturation in a time step [-]" type="double" value="0.1" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="high" />
+        <Parameter name="verbosity level" type="string" value="none" />
       </ParameterList>
 
       <ParameterList name="diffusion" type="ParameterList">
@@ -342,7 +342,7 @@
       <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="high" />
+        <Parameter name="verbosity level" type="string" value="none" />
       </ParameterList>
 
       <ParameterList name="diffusion" type="ParameterList">
@@ -368,7 +368,7 @@
       <Parameter name="supress advective terms in preconditioner" type="bool" value="false" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="high" />
+        <Parameter name="verbosity level" type="string" value="none" />
       </ParameterList>
 
       <ParameterList name="diffusion" type="ParameterList">
@@ -451,7 +451,7 @@
       <Parameter name="upwind conductivity method" type="string" value="arithmetic mean" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="high" />
+        <Parameter name="verbosity level" type="string" value="none" />
       </ParameterList>
 
       <ParameterList name="diffusion" type="ParameterList">
@@ -490,18 +490,18 @@
       <Parameter name="roughness length of snow-covered ground [m]" type="double" value="0.004" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object" type="ParameterList">
-        <Parameter name="verbosity level" type="string" value="high" />
+        <Parameter name="verbosity level" type="string" value="none" />
       </ParameterList>
 
       <ParameterList name="initial condition" type="ParameterList">
-        <Parameter name="constant" type="double" value="0.25" />
+        <Parameter name="constant" type="double" value="0.0" />
       </ParameterList>
 
       <ParameterList name="inverse" type="ParameterList">
         <Parameter name="preconditioning method" type="string" value="identity" />
         <Parameter name="iterative method" type="string" value="gmres" />
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="high" />
+          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
         <ParameterList name="gmres parameters" type="ParameterList">
           <Parameter name="preconditioning strategy" type="string" value="left" />
@@ -946,7 +946,7 @@
         <Parameter name="save diagnostic data" type="bool" value="true" />
         <Parameter name="debug cells" type="Array(int)" value="{0}" />
         <ParameterList name="verbose object" type="ParameterList">
-          <Parameter name="verbosity level" type="string" value="high" />
+          <Parameter name="verbosity level" type="string" value="none" />
         </ParameterList>
       </ParameterList>
 
