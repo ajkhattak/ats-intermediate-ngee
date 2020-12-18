@@ -140,7 +140,7 @@
   <ParameterList name="cycle driver" type="ParameterList">
     <Parameter name="start time" type="double" value="0.0" />
     <Parameter name="start time units" type="string" value="s" />
-    <Parameter name="end time" type="double" value="365.5" />
+    <Parameter name="end time" type="double" value="1825.5" />
     <Parameter name="end time units" type="string" value="d" />
     
     <ParameterList name="required times" type="ParameterList">
@@ -250,7 +250,7 @@
           <Parameter name="backtrack max steps" type="int" value="10" />
           <Parameter name="backtrack factor" type="double" value="0.25" />
           <Parameter name="backtrack tolerance" type="double" value="0.0001" />
-          <Parameter name="nonlinear tolerance" type="double" value="1e-5" />
+          <Parameter name="nonlinear tolerance" type="double" value="1e-06" />
           <Parameter name="diverged tolerance" type="double" value="1000000.0" />
           <Parameter name="limit iterations" type="int" value="21" />
           <ParameterList name="verbose object" type="ParameterList">
@@ -556,7 +556,7 @@
           <Parameter name="backtrack lag" type="int" value="0" />
           <Parameter name="backtrack factor" type="double" value="0.25" />
           <Parameter name="backtrack tolerance" type="double" value="0.0001" />
-          <Parameter name="nonlinear tolerance" type="double" value="5e-05" />
+          <Parameter name="nonlinear tolerance" type="double" value="1e-06" />
           <Parameter name="diverged tolerance" type="double" value="1000000.0" />
           <Parameter name="limit iterations" type="int" value="21" />
           <ParameterList name="verbose object" type="ParameterList">

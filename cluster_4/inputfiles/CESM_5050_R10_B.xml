@@ -118,10 +118,11 @@
     </ParameterList>
     <ParameterList name="surface outletbox" type="ParameterList">
       <ParameterList name="region: box" type="ParameterList">
-        <Parameter name="low coordinate" type="Array(double)" value="{0.0,0.0}" />
-        <Parameter name="high coordinate" type="Array(double)" value="{0.0,1.0}" />
+        <Parameter name="low coordinate" type="Array(double)" value="{134.862, 48.9144}" />
+        <Parameter name="high coordinate" type="Array(double)" value="{148.82, 61.2156}" />
       </ParameterList>
     </ParameterList>
+    
     <ParameterList name="surface outlet" type="ParameterList">
       <ParameterList name="region: logical" type="ParameterList">
         <Parameter name="operation" type="string" value="intersect" />
@@ -143,6 +144,8 @@
     <Parameter name="start time units" type="string" value="s" />
     <Parameter name="end time" type="double" value="365.5" />
     <Parameter name="end time units" type="string" value="d" />
+    <Parameter name="subcycled timestep" type="bool" value="true" />
+    
     <ParameterList name="required times" type="ParameterList">
       <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400.0,-1.0}" />
     </ParameterList>
@@ -218,8 +221,7 @@
   </ParameterList>
 
   <ParameterList name="checkpoint" type="ParameterList">
-    <Parameter name="file name base" type="string" value="checkpoint_*" />
-    <Parameter name="times start period stop 0" type="Array(double)" value="{43200.0,31536000.0,-1.0}" />
+    <Parameter name="times start period stop" type="Array(double)" value="{43200.0,86400,-1.0}" />
   </ParameterList>
 
   <ParameterList name="PKs" type="ParameterList">
